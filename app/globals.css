@@ -1,26 +1,332 @@
+/* ============================================================
+   FINREV SOLUTIONS — Global Styles & Design System
+   Digital Card Inspired Corporate Wealth Management System
+   Brand Anchor: Deep Navy (#071A2A / #0A1F31)
+   Corporate Accent: Signature Teal (#146B73 / #176F76)
+   Signature Accent: Gold (#D9A500 / #F0B900, 2-5% presence)
+   Canvas: Crisp White (#FFFFFF) & Refined Off-White (#F7F8F9)
+   ============================================================ */
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ── Design Tokens ─────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Surfaces — Digital Card Crisp White & Off-White Canvas */
+  --color-surface: #ffffff;
+  --color-surface-dim: #e8eff5;
+  --color-surface-bright: #ffffff;
+  --color-surface-lowest: #ffffff;
+  --color-surface-low: #f5f7f8;
+  --color-surface-mid: #f0f4f7;
+  --color-surface-high: #e8eff5;
+  --color-surface-highest: #d9e2ec;
+  --color-surface-canvas: #f7f8f9;
+  --color-surface-card: #ffffff;
+
+  /* On-Surface Text */
+  --color-on-surface: #071a2a;
+  --color-on-surface-variant: #334155;
+
+  /* Primary — Deep Corporate Navy (#071A2A / #0C1928) */
+  --color-primary: #071a2a;
+  --color-primary-50: #f0f4f8;
+  --color-primary-100: #d9e2ec;
+  --color-primary-600: #102a43;
+  --color-primary-700: #0c1928;
+  --color-primary-800: #071a2a;
+  --color-primary-900: #040e17;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #0c1928;
+  --color-on-primary-container: #d9e2ec;
+  --color-primary-fixed: #d9e2ec;
+  --color-primary-fixed-dim: #9fb3c8;
+  --color-on-primary-fixed: #071a2a;
+  --color-on-primary-fixed-variant: #102a43;
+  --color-inverse-primary: #9fb3c8;
+  --color-inverse-surface: #0c1928;
+  --color-inverse-on-surface: #f7f8f9;
+
+  /* Secondary — Corporate Deep Teal & Signature Teal (#146B73 / #176F76) */
+  --color-secondary: #146b73;
+  --color-secondary-50: #f0f7f8;
+  --color-secondary-100: #d9ebed;
+  --color-secondary-500: #176f76;
+  --color-secondary-600: #146b73;
+  --color-secondary-700: #0f5258;
+  --color-secondary-800: #0b3d42;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #176f76;
+  --color-on-secondary-container: #ffffff;
+  --color-secondary-fixed: #d9ebed;
+  --color-secondary-fixed-dim: #176f76;
+  --color-on-secondary-fixed: #071a2a;
+  --color-on-secondary-fixed-variant: #0f5258;
+
+  /* Strict Override of Emerald to Corporate Teal (#146B73 / #176F76) — Eliminates Bright Green */
+  --color-emerald-50: #f0f7f8;
+  --color-emerald-100: #d9ebed;
+  --color-emerald-200: #b3d7db;
+  --color-emerald-300: #7fb5bc;
+  --color-emerald-400: #176f76;
+  --color-emerald-500: #146b73;
+  --color-emerald-600: #0f5258;
+  --color-emerald-700: #0b3d42;
+  --color-emerald-800: #082d31;
+  --color-emerald-900: #051d20;
+
+  /* Digital Card Gold Accent (#E8B400 / #F0B900, strict 2-5% presence) */
+  --color-finrev-gold: #e8b400;
+  --color-finrev-gold-hover: #f0b900;
+  --color-finrev-gold-light: #f0b900;
+  --color-finrev-gold-subtle: rgba(232, 180, 0, 0.09);
+
+  /* Tertiary — Restrained Corporate Gold */
+  --color-tertiary: #e8b400;
+  --color-tertiary-50: #fffdf5;
+  --color-tertiary-100: #fef3c7;
+  --color-tertiary-600: #d49e00;
+  --color-tertiary-700: #b8860b;
+  --color-on-tertiary: #071a2a;
+  --color-tertiary-container: #2f2200;
+  --color-on-tertiary-container: #f0b900;
+
+  /* Semantic Accent Surfaces */
+  --color-emerald-subtle: rgba(20, 107, 115, 0.08);
+  --color-teal-accent: #176f76;
+  --color-gold-subtle: rgba(232, 180, 0, 0.09);
+  --color-navy-subtle: #f0f4f8;
+
+  /* Text Hierarchy */
+  --color-text-primary: #071a2a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  --color-text-dim: #94a3b8;
+
+  /* Borders & Dividers — Fine Structural Slate (#D8E1E5) */
+  --color-border-subtle: #e8eff5;
+  --color-border-strong: #d8e1e5;
+  --color-border-navy: rgba(7, 26, 42, 0.12);
+  --color-border-gold: rgba(217, 165, 0, 0.35);
+  --color-outline: #64748b;
+  --color-outline-variant: #d8e1e5;
+
+  /* Error / Danger */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-danger-red: #dc2626;
+  --color-danger-subtle: #fef2f2;
+
+  /* Background */
+  --color-background: #f7f8f9;
+  --color-on-background: #071a2a;
+
+  /* Typography */
+  --font-display: var(--font-plus-jakarta), system-ui, sans-serif;
+  --font-heading: var(--font-plus-jakarta), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), "Fira Code", monospace;
+
+  /* Spacing */
+  --spacing-gutter: 1.5rem;
+  --spacing-page-x: 2rem;
+
+  /* Controlled Border Radii: 8px, 10px, 12px */
+  --radius-sm: 8px;
+  --radius: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows — Refined Tactile Card Elevation */
+  --shadow-card: 0 1px 3px rgba(7, 26, 42, 0.04), 0 4px 12px -2px rgba(7, 26, 42, 0.05);
+  --shadow-card-hover: 0 6px 20px -4px rgba(7, 26, 42, 0.10), 0 2px 6px -1px rgba(7, 26, 42, 0.04);
+  --shadow-elevated: 0 12px 32px -6px rgba(7, 26, 42, 0.12), 0 2px 6px -1px rgba(7, 26, 42, 0.04);
+  --shadow-popover: 0 16px 40px -6px rgba(7, 26, 42, 0.14), 0 4px 12px -2px rgba(7, 26, 42, 0.06);
+  --shadow-modal: 0 25px 50px -12px rgba(7, 26, 42, 0.25);
+  --shadow-header: 0 2px 12px rgba(7, 26, 42, 0.03);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base Reset & Presets ──────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Accessible visible scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ── Typography Utilities ──────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.015em;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Layout Utility ────────────────────────────────────────── */
+.container-page {
+  max-width: 80rem; /* 1280px */
+  margin-inline: auto;
+  padding-inline: var(--spacing-page-x);
+}
+
+@media (max-width: 768px) {
+  .container-page {
+    padding-inline: 1rem;
+  }
+}
+
+/* ── Focus Ring ────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* ── Selection ─────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(217, 165, 0, 0.25);
+  color: var(--color-primary);
+}
+
+/* ── Transitions ───────────────────────────────────────────── */
+a,
+button {
+  transition-property: color, background-color, border-color, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 180ms;
+}
+
+/* ── Digital Card Signature Accents & Utilities ────────────── */
+.finrev-gold-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background-color: var(--color-finrev-gold);
+}
+
+.finrev-gold-line {
+  height: 2px;
+  background: linear-gradient(90deg, #071a2a 0%, #176f76 75%, #e8b400 100%);
+}
+
+/* ── Formal Gradient System ────────────────────────────────── */
+.finrev-gradient-primary {
+  background: linear-gradient(135deg, #071a2a 0%, #0c1928 60%, #146b73 100%);
+}
+
+.finrev-gradient-premium {
+  background: linear-gradient(90deg, #071a2a 0%, #176f76 75%, #e8b400 100%);
+}
+
+.finrev-gradient-light {
+  background: linear-gradient(180deg, #ffffff 0%, #f0f7f8 100%);
+}
+
+.finrev-gradient-navy {
+  background: linear-gradient(180deg, #071a2a 0%, #0c1928 100%);
+}
+
+/* ── Financial 3D Depth Utilities ──────────────────────────── */
+.finrev-3d-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border-strong);
+  box-shadow: 0 1px 3px rgba(7, 26, 42, 0.04), 0 8px 24px -4px rgba(7, 26, 42, 0.07);
+  border-radius: var(--radius-lg);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms ease;
+}
+
+.finrev-3d-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -6px rgba(7, 26, 42, 0.12), 0 2px 6px -1px rgba(7, 26, 42, 0.04);
+  border-color: rgba(20, 107, 115, 0.4);
+}
+
+.finrev-3d-node {
+  box-shadow: 0 0 0 4px rgba(20, 107, 115, 0.15), 0 4px 12px rgba(7, 26, 42, 0.2);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.finrev-3d-node:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 6px rgba(232, 180, 0, 0.25), 0 8px 20px rgba(7, 26, 42, 0.3);
+}
+
+.card-elevated {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border-strong);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-lg);
+  transition: box-shadow 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+
+.card-elevated:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: #b8c8d2;
+}
+
+.glass-panel-dark {
+  background-color: rgba(7, 26, 42, 0.96);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(216, 225, 229, 0.15);
+}
+
+.fine-divider {
+  height: 1px;
+  background-color: var(--color-border-strong);
+  width: 100%;
+}
+
+.badge-amfi {
+  background-color: var(--color-emerald-subtle);
+  color: var(--color-secondary-500);
+  border: 1px solid var(--color-border-strong);
 }
