@@ -40,7 +40,7 @@ export function AMCPartnersSection() {
               className="text-3xl sm:text-4xl md:text-[42px] font-extrabold text-[var(--color-primary)] tracking-tight leading-[1.15]"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              AMC Partners We Work With.
+              AMC Partners We Work With
             </h2>
             <p className="text-sm sm:text-base text-[var(--color-text-secondary)] mt-3 leading-relaxed">
               Access to mutual fund solutions across multiple Asset Management Companies. All folios are held directly with respective fund houses with zero pooled account structures.

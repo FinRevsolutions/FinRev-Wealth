@@ -17,12 +17,30 @@ export type NavGroup = {
 
 export const PRIMARY_NAV: NavGroup[] = [
   {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "About",
-    href: "/about",
+    label: "Solutions",
+    href: "/investments",
+    children: [
+      {
+        label: "Core Investments",
+        href: "/investments",
+        description: "Mutual funds, systematic compounding mandates, and fixed income",
+      },
+      {
+        label: "Wealth Solutions",
+        href: "/wealth-solutions",
+        description: "Milestone-driven roadmaps for retirement, education, and longevity",
+      },
+      {
+        label: "Capital Protection",
+        href: "/protection",
+        description: "Pure-risk term life and comprehensive healthcare shields",
+      },
+      {
+        label: "Specialized Assets",
+        href: "/investments/pms",
+        description: "Curated PMS, AIF, and pre-IPO allocations for qualified portfolios",
+      },
+    ],
   },
   {
     label: "Investments",
@@ -34,39 +52,39 @@ export const PRIMARY_NAV: NavGroup[] = [
         description: "Equity, debt, hybrid and index funds across 40+ AMCs",
       },
       {
-        label: "SIP",
+        label: "SIP Compounding",
         href: "/investments/sip",
         description: "Systematic Investment Planning — disciplined monthly investing",
       },
       {
-        label: "Lumpsum",
+        label: "Lumpsum & STP",
         href: "/investments/lumpsum",
         description: "Strategic one-time deployment via STP routes",
       },
       {
-        label: "Bonds",
+        label: "Bonds & Fixed Income",
         href: "/investments/bonds",
         description: "Corporate bonds, G-Secs and Sovereign Gold Bonds",
       },
       {
-        label: "PMS",
+        label: "Portfolio Management (PMS)",
         href: "/investments/pms",
-        description: "Portfolio Management Services for HNI investors",
+        description: "Active high-conviction portfolios for eligible HNI investors",
       },
       {
-        label: "AIF",
+        label: "Alternative Funds (AIF)",
         href: "/investments/aif",
-        description: "Alternative Investment Funds — Category II & III",
+        description: "SEBI Category II & III pooled private capital vehicles",
       },
       {
         label: "Unlisted & Pre-IPO",
         href: "/investments/unlisted-pre-ipo",
-        description: "Access to private equity and pre-listing opportunities",
+        description: "Direct access to late-stage private enterprise stakes",
       },
     ],
   },
   {
-    label: "Wealth Solutions",
+    label: "Wealth Planning",
     href: "/wealth-solutions",
     children: [
       {
@@ -77,10 +95,10 @@ export const PRIMARY_NAV: NavGroup[] = [
       {
         label: "Retirement Planning",
         href: "/wealth-solutions/retirement-planning",
-        description: "Pre- and post-retirement cashflow strategies",
+        description: "Pre- and post-retirement inflation-adjusted cashflow",
       },
       {
-        label: "Child Education",
+        label: "Child Education Planning",
         href: "/wealth-solutions/child-education",
         description: "Education inflation planning over 10–18 year horizons",
       },
@@ -90,9 +108,9 @@ export const PRIMARY_NAV: NavGroup[] = [
         description: "Long-term multi-generational compounding strategies",
       },
       {
-        label: "Portfolio Review",
+        label: "Portfolio Diagnostic Review",
         href: "/wealth-solutions/portfolio-review",
-        description: "Diagnostic audit of existing schemes and allocations",
+        description: "Diagnostic audit of existing schemes, overlaps and fees",
       },
     ],
   },
@@ -101,11 +119,6 @@ export const PRIMARY_NAV: NavGroup[] = [
     href: "/protection",
     children: [
       {
-        label: "Life Insurance",
-        href: "/protection/life-insurance",
-        description: "Comprehensive life cover for your family's security",
-      },
-      {
         label: "Term Insurance",
         href: "/protection/term-insurance",
         description: "Pure risk protection at an affordable premium",
@@ -113,12 +126,17 @@ export const PRIMARY_NAV: NavGroup[] = [
       {
         label: "Health Insurance",
         href: "/protection/health-insurance",
-        description: "Family floater, super top-up and critical illness cover",
+        description: "Family floater, super top-up and critical care cover",
+      },
+      {
+        label: "Life Insurance",
+        href: "/protection/life-insurance",
+        description: "Comprehensive financial insulation for your family",
       },
       {
         label: "General Insurance",
         href: "/protection/general-insurance",
-        description: "Motor, asset, travel and commercial insurance",
+        description: "Asset, motor, and commercial liability protection",
       },
     ],
   },
@@ -129,27 +147,27 @@ export const PRIMARY_NAV: NavGroup[] = [
       {
         label: "SIP Calculator",
         href: "/tools/sip-calculator",
-        description: "Project the future value of systematic investments",
+        description: "Project systematic monthly compounding growth",
       },
       {
         label: "Lumpsum Calculator",
         href: "/tools/lumpsum-calculator",
-        description: "Estimate growth on one-time investments",
-      },
-      {
-        label: "Goal Planner",
-        href: "/tools/goal-planner",
-        description: "Reverse-calculate SIPs required to reach any goal",
-      },
-      {
-        label: "Retirement Calculator",
-        href: "/tools/retirement-calculator",
-        description: "Plan the corpus required for a stress-free retirement",
+        description: "Estimate returns on one-time surplus capital",
       },
       {
         label: "Step-Up SIP Calculator",
         href: "/tools/step-up-sip-calculator",
-        description: "Model annual increments in your SIP contributions",
+        description: "Model annual contribution escalations",
+      },
+      {
+        label: "Goal Planner",
+        href: "/tools/goal-planner",
+        description: "Reverse-calculate required monthly investments",
+      },
+      {
+        label: "Retirement Calculator",
+        href: "/tools/retirement-calculator",
+        description: "Determine inflation-adjusted corpus requirements",
       },
     ],
   },
@@ -158,67 +176,28 @@ export const PRIMARY_NAV: NavGroup[] = [
     href: "/insights",
     children: [
       {
-        label: "Blog",
+        label: "Articles & Perspectives",
         href: "/insights/blog",
-        description: "Market commentary, guides and investment insights",
+        description: "Objective market analysis and investing frameworks",
       },
       {
         label: "Mutual Fund Guide",
         href: "/insights/mutual-fund-guide",
-        description: "Everything about funds, NAV, expense ratios and more",
+        description: "Foundational education on categories, NAV and risk",
       },
       {
-        label: "FAQ",
+        label: "Frequently Asked Questions",
         href: "/insights/faq",
-        description: "Answers to common investor questions",
+        description: "Common questions on distribution, fees, and safety",
       },
     ],
+  },
+  {
+    label: "About",
+    href: "/about",
   },
   {
     label: "Contact",
     href: "/contact",
   },
 ];
-
-export const FOOTER_LINKS = {
-  investments: [
-    { label: "Mutual Funds", href: "/investments/mutual-funds" },
-    { label: "SIP", href: "/investments/sip" },
-    { label: "Lumpsum", href: "/investments/lumpsum" },
-    { label: "Bonds", href: "/investments/bonds" },
-    { label: "PMS", href: "/investments/pms" },
-    { label: "AIF", href: "/investments/aif" },
-    { label: "Unlisted & Pre-IPO", href: "/investments/unlisted-pre-ipo" },
-  ],
-  wealthSolutions: [
-    { label: "Goal-Based Investing", href: "/wealth-solutions/goal-based-investing" },
-    { label: "Retirement Planning", href: "/wealth-solutions/retirement-planning" },
-    { label: "Child Education", href: "/wealth-solutions/child-education" },
-    { label: "Wealth Creation", href: "/wealth-solutions/wealth-creation" },
-    { label: "Portfolio Review", href: "/wealth-solutions/portfolio-review" },
-  ],
-  protection: [
-    { label: "Life Insurance", href: "/protection/life-insurance" },
-    { label: "Term Insurance", href: "/protection/term-insurance" },
-    { label: "Health Insurance", href: "/protection/health-insurance" },
-    { label: "General Insurance", href: "/protection/general-insurance" },
-  ],
-  tools: [
-    { label: "SIP Calculator", href: "/tools/sip-calculator" },
-    { label: "Lumpsum Calculator", href: "/tools/lumpsum-calculator" },
-    { label: "Goal Planner", href: "/tools/goal-planner" },
-    { label: "Retirement Calculator", href: "/tools/retirement-calculator" },
-    { label: "Step-Up SIP Calculator", href: "/tools/step-up-sip-calculator" },
-  ],
-  legal: [
-    { label: "Privacy Policy", href: "/legal/privacy-policy" },
-    { label: "Terms of Service", href: "/legal/terms" },
-    { label: "Regulatory Disclosures", href: "/legal/regulatory-disclosures" },
-  ],
-  company: [
-    { label: "About FINREV", href: "/about" },
-    { label: "Insights & Blog", href: "/insights" },
-    { label: "Contact", href: "/contact" },
-    { label: "Client Login", href: "/client/login" },
-  ],
-};

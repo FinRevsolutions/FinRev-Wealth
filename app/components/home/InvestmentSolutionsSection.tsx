@@ -1,187 +1,244 @@
-"use client";
-
 import Link from "next/link";
-import { ArrowRight, PieChart, Coins, Landmark, Banknote, ShieldCheck, CheckCircle2 } from "lucide-react";
-import { Container } from "@/components/ui/Container";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+import { ArrowRight, ArrowUpRight, Layers, Landmark, Briefcase, Sparkles, Building2, TrendingUp, ShieldCheck } from "lucide-react";
 
 export function InvestmentSolutionsSection() {
   return (
-    <section className="py-20 md:py-28 bg-white border-t border-[var(--color-border-subtle)]">
-      <Container>
+    <section
+      className="py-16 md:py-24 lg:py-28 bg-white border-b border-[var(--color-border-subtle)]"
+      aria-label="Investment Solutions"
+      id="investments"
+    >
+      <div className="container-page">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-10 border-b border-[var(--color-border-strong)] gap-6">
           <div className="max-w-2xl">
-            <SectionLabel>Core Capital Allocation</SectionLabel>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-secondary)]" />
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[var(--color-secondary)]">
+                INVESTMENT UNIVERSE
+              </span>
+            </div>
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight mt-2"
+              className="text-3xl sm:text-4xl md:text-[42px] font-extrabold text-[var(--color-primary)] tracking-tight leading-[1.12]"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Investment Solutions
+              Structured Capital Solutions. Tailored Asset Allocation.
             </h2>
-            <p className="text-base text-[var(--color-text-secondary)] mt-2.5 leading-relaxed">
-              Carefully filtered financial assets engineered for capital preservation, systematic compounding,
-              and multi-decade wealth creation without pool account counterparty risk.
+            <p className="text-sm sm:text-base text-[var(--color-text-secondary)] mt-3 leading-relaxed font-normal">
+              From foundational mutual fund portfolios to specialized institutional private market allocations, we structure your holdings with direct investor custody and strict risk discipline.
             </p>
           </div>
+
           <Link
             href="/investments"
-            className="inline-flex items-center gap-2 text-sm font-bold text-[var(--color-secondary)] hover:text-[var(--color-secondary-700)] transition-colors"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors shrink-0"
           >
-            <span>Explore All Investment Categories</span>
-            <ArrowRight size={15} />
+            <span>Explore All Investment Offerings</span>
+            <ArrowRight size={14} />
           </Link>
         </div>
 
-        {/* Editorial Investment-Category Composition (Replaces 4-Card Grid) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Flagship Left Feature: Core Equities & Systematic SIP (7 Cols) */}
-          <div className="lg:col-span-7 bg-[var(--color-surface-canvas)] rounded-2xl p-7 md:p-9 border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] flex flex-col justify-between">
+        {/* Structured Grid: 1 Primary Feature Area (Hero Block) + Supporting Services (Asymmetric Visual Weights) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-8">
+          {/* PRIMARY FEATURE AREA (7 cols): Mutual Funds & Systematic Compounding (SIP) */}
+          <div className="lg:col-span-7 bg-[var(--color-surface-canvas)] border border-[var(--color-border-strong)] p-6 sm:p-10 rounded-[4px] flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between pb-4 border-b border-[var(--color-border-subtle)] mb-6">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-[var(--color-secondary)] text-white flex items-center justify-center">
-                    <PieChart size={20} />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-secondary)] block">
-                      Core Wealth Engine
-                    </span>
-                    <h3 className="text-lg font-bold text-[var(--color-text-primary)]">
-                      Mutual Funds & Systematic Investment Plans (SIP)
-                    </h3>
-                  </div>
-                </div>
-                <span className="text-xs font-semibold text-[var(--color-secondary)] bg-[var(--color-emerald-subtle)] px-2.5 py-1 rounded-full border border-[var(--color-border-strong)]">
-                  40+ AMCs
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest bg-[var(--color-primary)] text-white px-2.5 py-1 rounded-[2px]">
+                  CORE FOUNDATION
+                </span>
+                <span className="text-xs font-mono text-[var(--color-secondary)] font-semibold">
+                  Direct AMC Distribution · ARN-195797
                 </span>
               </div>
 
-              <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
-                Direct portfolio access across India's premier mutual fund houses. Rather than chasing short-term performance tables, FINREV constructs goal-aligned asset allocations across Large Cap, Flexi Cap, Mid Cap, and Hybrid strategies.
+              <h3
+                className="text-2xl sm:text-3xl font-extrabold text-[var(--color-primary)] leading-tight mb-3"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Mutual Funds & Systematic Investment Planning (SIP)
+              </h3>
+
+              <p className="text-sm sm:text-base text-[var(--color-text-secondary)] leading-relaxed mb-6 font-normal">
+                Disciplined compounding across Equity, Debt, and Hybrid strategies from India&apos;s leading Asset Management Companies. Every folio is registered directly in your name with zero intermediary pool accounts.
               </p>
 
-              {/* Editorial Feature Highlights */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="p-4 rounded-xl bg-white border border-[var(--color-border-subtle)]">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <Coins size={16} className="text-[var(--color-secondary)]" />
-                    <span className="text-xs font-bold text-[var(--color-text-primary)]">
-                      Rupee Cost Averaging
-                    </span>
-                  </div>
-                  <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                    Automated SIP installments acquire more mutual fund units during market corrections, lowering average acquisition cost without timing risk.
-                  </p>
+              {/* 3 Core Execution Advantages */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-[var(--color-border-subtle)] mb-6">
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-[var(--color-text-muted)] block">
+                    Execution
+                  </span>
+                  <span className="text-xs font-bold text-[var(--color-primary)] mt-0.5 block">
+                    Paperless NACH Mandates
+                  </span>
                 </div>
-                <div className="p-4 rounded-xl bg-white border border-[var(--color-border-subtle)]">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <ShieldCheck size={16} className="text-[var(--color-secondary)]" />
-                    <span className="text-xs font-bold text-[var(--color-text-primary)]">
-                      Direct Folio Ownership
-                    </span>
-                  </div>
-                  <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                    100% of investments settle directly between your bank and the respective AMCs. No third-party pool accounts or escrow risks.
-                  </p>
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-[var(--color-text-muted)] block">
+                    Custody
+                  </span>
+                  <span className="text-xs font-bold text-[var(--color-primary)] mt-0.5 block">
+                    Direct AMC Holding
+                  </span>
                 </div>
-              </div>
-
-              {/* Key Capabilities */}
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-medium text-[var(--color-text-secondary)] mb-6">
-                {["Step-Up SIP Capabilities", "Consolidated CAS Reporting", "Tax-Loss Harvesting Review"].map((item) => (
-                  <div key={item} className="flex items-center gap-1.5">
-                    <CheckCircle2 size={13} className="text-[var(--color-secondary)] shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-[var(--color-text-muted)] block">
+                    Compounding
+                  </span>
+                  <span className="text-xs font-bold text-[var(--color-primary)] mt-0.5 block">
+                    Rupee-Cost Averaging
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Dual Link Actions */}
-            <div className="pt-5 border-t border-[var(--color-border-subtle)] flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3 pt-4">
               <Link
                 href="/investments/mutual-funds"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[var(--color-secondary)] text-white text-xs font-bold rounded-xl hover:bg-[var(--color-secondary-700)] transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white text-xs font-semibold rounded-[3px] hover:bg-[var(--color-secondary)] transition-colors shadow-sm"
               >
-                <span>Explore Mutual Funds</span>
+                <span>View Mutual Funds</span>
                 <ArrowRight size={13} />
               </Link>
               <Link
                 href="/investments/sip"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-white border border-[var(--color-border-strong)] text-[var(--color-text-primary)] text-xs font-bold rounded-xl hover:bg-[var(--color-surface-low)] transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-[var(--color-border-strong)] text-[var(--color-primary)] text-xs font-semibold rounded-[3px] hover:border-[var(--color-secondary)] transition-colors"
               >
-                <span>Calculate & Start SIP</span>
-                <ArrowRight size={13} />
+                <span>SIP Compounding</span>
               </Link>
-            </div>
-          </div>
-
-          {/* Right Column: Asymmetric Stacked Pillars (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-6">
-            {/* Block 1: Bonds & Fixed Income */}
-            <div className="bg-white rounded-2xl p-6 sm:p-7 border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] hover:border-[var(--color-primary)] transition-all flex flex-col justify-between flex-1">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-[var(--color-primary)] text-white flex items-center justify-center">
-                    <Landmark size={19} />
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-primary)] bg-[var(--color-navy-subtle)] px-2.5 py-1 rounded-full">
-                    Fixed Income & Debt
-                  </span>
-                </div>
-                <h4 className="text-base font-bold text-[var(--color-text-primary)] mb-2">
-                  Bonds & Capital Preservation
-                </h4>
-                <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mb-4">
-                  Curated Government Securities (G-Secs), State Development Loans (SDLs), and AAA/AA+ Corporate Bonds structured to lock in dependable coupon yields and stabilize overall portfolio volatility.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {["Sovereign Safety", "Predictable Coupons", "Duration Matching"].map((t) => (
-                    <span key={t} className="text-[11px] font-semibold text-[var(--color-text-muted)] bg-[var(--color-surface-canvas)] px-2.5 py-1 rounded-md border border-[var(--color-border-subtle)]">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <Link
-                href="/investments/bonds"
-                className="pt-4 border-t border-[var(--color-border-subtle)] inline-flex items-center justify-between text-xs font-bold text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors group"
-              >
-                <span>Explore Fixed Income & Bonds</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-
-            {/* Block 2: Tactical Deployments & Lumpsum STP */}
-            <div className="bg-white rounded-2xl p-6 sm:p-7 border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] hover:border-[var(--color-secondary)] transition-all flex flex-col justify-between flex-1">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-[var(--color-emerald-subtle)] text-[var(--color-secondary)] border border-[var(--color-border-strong)] flex items-center justify-center">
-                    <Banknote size={19} />
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-secondary)] bg-[var(--color-surface-canvas)] px-2.5 py-1 rounded-full border border-[var(--color-border-subtle)]">
-                    Liquidity Management
-                  </span>
-                </div>
-                <h4 className="text-base font-bold text-[var(--color-text-primary)] mb-2">
-                  Lumpsum Deployment & Systematic Transfers (STP)
-                </h4>
-                <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mb-4">
-                  Prudently deploy windfall liquidity (business payouts, property sale proceeds, annual bonuses) by parking in liquid funds and systematically transferring into equities over 12 to 36 months.
-                </p>
-              </div>
               <Link
                 href="/investments/lumpsum"
-                className="pt-4 border-t border-[var(--color-border-subtle)] inline-flex items-center justify-between text-xs font-bold text-[var(--color-secondary)] hover:text-[var(--color-secondary-700)] transition-colors group"
+                className="inline-flex items-center gap-2 px-4 py-2.5 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] text-xs font-medium transition-colors"
               >
-                <span>Deploy Surplus Capital Wisely</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                <span>Lumpsum & STP Routes</span>
               </Link>
             </div>
           </div>
+
+          {/* SECONDARY FEATURE AREA (5 cols): Bonds & High-Credit Fixed Income */}
+          <div className="lg:col-span-5 bg-white border border-[var(--color-border-strong)] p-6 sm:p-8 rounded-[4px] flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--color-secondary)]">
+                  CAPITAL PRESERVATION
+                </span>
+              </div>
+
+              <h3
+                className="text-xl sm:text-2xl font-bold text-[var(--color-primary)] leading-tight mb-2.5"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Bonds & Sovereign Securities
+              </h3>
+
+              <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-5 font-normal">
+                Sovereign Gold Bonds, central government securities, and rated corporate debentures providing predictable cash flows and portfolio stability.
+              </p>
+
+              <div className="p-3.5 bg-[var(--color-surface-canvas)] border border-[var(--color-border-subtle)] rounded-[3px] mb-5">
+                <span className="text-[10px] font-mono uppercase text-[var(--color-text-muted)] block mb-1">
+                  Portfolio Role
+                </span>
+                <span className="text-xs font-semibold text-[var(--color-primary)] block">
+                  Defensive yield and duration management counter-balancing equity volatility.
+                </span>
+              </div>
+            </div>
+
+            <Link
+              href="/investments/bonds"
+              className="inline-flex items-center justify-between w-full py-2.5 px-4 bg-[var(--color-surface-canvas)] hover:bg-slate-100 border border-[var(--color-border-subtle)] text-[var(--color-primary)] text-xs font-semibold rounded-[3px] transition-colors group"
+            >
+              <span>Explore Fixed Income & Bonds</span>
+              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[var(--color-secondary)]" />
+            </Link>
+          </div>
         </div>
-      </Container>
+
+        {/* SUPPORTING SPECIALIZED SERVICES ROW (3 Distinct Specialized Blocks with Hairlines) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-[var(--color-border-subtle)]">
+          {/* PMS */}
+          <div className="p-5 bg-white border border-[var(--color-border-subtle)] hover:border-[var(--color-border-strong)] rounded-[4px] flex flex-col justify-between transition-colors">
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-mono font-bold uppercase text-[var(--color-secondary)]">
+                  Active Stock Mandates
+                </span>
+                <span className="text-[10px] font-mono text-[var(--color-text-muted)]">
+                  Min ₹50 Lakhs
+                </span>
+              </div>
+              <h4 className="text-base font-bold text-[var(--color-primary)] mb-1.5">
+                Portfolio Management (PMS)
+              </h4>
+              <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mb-4">
+                Institutional fund manager stock selection with direct demat holding for qualified HNI portfolios.
+              </p>
+            </div>
+            <Link
+              href="/investments/pms"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors group"
+            >
+              <span>Explore PMS Solutions</span>
+              <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
+
+          {/* AIF */}
+          <div className="p-5 bg-white border border-[var(--color-border-subtle)] hover:border-[var(--color-border-strong)] rounded-[4px] flex flex-col justify-between transition-colors">
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-mono font-bold uppercase text-[var(--color-secondary)]">
+                  Private Capital
+                </span>
+                <span className="text-[10px] font-mono text-[var(--color-text-muted)]">
+                  Min ₹1 Crore
+                </span>
+              </div>
+              <h4 className="text-base font-bold text-[var(--color-primary)] mb-1.5">
+                Alternative Investment Funds (AIF)
+              </h4>
+              <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mb-4">
+                SEBI Category II & III pooled strategies in private equity, private debt, and structured real estate.
+              </p>
+            </div>
+            <Link
+              href="/investments/aif"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors group"
+            >
+              <span>Explore AIF Vehicles</span>
+              <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
+
+          {/* Unlisted & Pre-IPO */}
+          <div className="p-5 bg-white border border-[var(--color-border-subtle)] hover:border-[var(--color-border-strong)] rounded-[4px] flex flex-col justify-between transition-colors">
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-mono font-bold uppercase text-[var(--color-secondary)]">
+                  Pre-Listing Placements
+                </span>
+                <span className="text-[10px] font-mono text-[var(--color-text-muted)]">
+                  HNI Portfolios
+                </span>
+              </div>
+              <h4 className="text-base font-bold text-[var(--color-primary)] mb-1.5">
+                Unlisted Shares & Pre-IPO
+              </h4>
+              <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mb-4">
+                Access to high-growth private enterprise equity prior to public stock exchange listing.
+              </p>
+            </div>
+            <Link
+              href="/investments/unlisted-pre-ipo"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors group"
+            >
+              <span>View Pre-IPO Solutions</span>
+              <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

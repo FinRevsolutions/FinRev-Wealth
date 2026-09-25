@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, TrendingUp, DollarSign, Target, CalendarClock } from "lucide-react";
+import { ArrowRight, TrendingUp, DollarSign, Target, CalendarClock, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 
 const SELECTED_TOOLS = [
@@ -21,6 +21,13 @@ const SELECTED_TOOLS = [
     href: "/tools/lumpsum-calculator",
   },
   {
+    icon: ArrowUpRight,
+    name: "Step-Up SIP",
+    subtitle: "Annual contribution escalation modeler",
+    metric: "10% annual top-up",
+    href: "/tools/step-up-sip-calculator",
+  },
+  {
     icon: Target,
     name: "Goal Planner",
     subtitle: "Reverse-calculate SIPs for targeted life milestones",
@@ -33,6 +40,13 @@ const SELECTED_TOOLS = [
     subtitle: "Inflation-adjusted post-retirement corpus modeler",
     metric: "Longevity planning",
     href: "/tools/retirement-calculator",
+  },
+  {
+    icon: Target,
+    name: "Portfolio Review",
+    subtitle: "Consolidated CAS diagnostic & scheme overlap audit",
+    metric: "Comprehensive Audit",
+    href: "/wealth-solutions/portfolio-review",
   },
 ];
 

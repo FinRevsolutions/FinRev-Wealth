@@ -1,51 +1,55 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/home/HeroSection";
-import { TrustStrip } from "@/components/home/TrustStrip";
-import { PillarsSection } from "@/components/home/PillarsSection";
+import { TrustArchitectureSection } from "@/components/home/TrustArchitectureSection";
+import { FinRevMethodSection } from "@/components/home/FinRevMethodSection";
+import { FinancialUniverseSection } from "@/components/home/FinancialUniverseSection";
 import { FinancialJourneySection } from "@/components/home/FinancialJourneySection";
-import { SolutionsMatrix } from "@/components/home/SolutionsMatrix";
-import { AMCPartnersSection } from "@/components/home/AMCPartnersSection";
 import { WorkbenchPreview } from "@/components/home/WorkbenchPreview";
-import { FounderInsightsSection } from "@/components/home/FounderInsightsSection";
-import { ActionAnchor } from "@/components/home/ActionAnchor";
+import { AMCPartnersSection } from "@/components/home/AMCPartnersSection";
+import { HumanExpertiseSection } from "@/components/home/HumanExpertiseSection";
+import { InsightsSection } from "@/components/home/InsightsSection";
+import { FinalStatementSection } from "@/components/home/FinalStatementSection";
 import { BRAND } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `${BRAND.name} | ${BRAND.tagline}`,
+  title: `${BRAND.name} | The Financial Intelligence Platform`,
   description:
-    "Investment, wealth planning and protection solutions designed around your financial goals, risk profile and wealth creation journey. AMFI-registered MFD ARN-195797.",
+    "Institutional financial intelligence, milestone-mapped wealth planning, and mutual fund distribution under AMFI ARN-195797. Interconnected investment architecture.",
   alternates: { canonical: "/" },
 };
 
 export default function HomePage() {
   return (
     <>
-      {/* 01 Hero — Panchanan Kumar Panoramic Visual & Clear Direction */}
+      {/* 01. Hero — Immersive 42/58 Split with Large 3D Financial Architecture */}
       <HeroSection />
 
-      {/* 02 Trust & Regulatory Ribbon */}
-      <TrustStrip />
+      {/* 02. Trust Architecture — Full-Width Institutional Metric Strip */}
+      <TrustArchitectureSection />
 
-      {/* 03 Core Pillars — INVEST • PLAN • PROTECT • GROW */}
-      <PillarsSection />
+      {/* 03. The FINREV Method — "Money needs direction. Wealth needs structure." */}
+      <FinRevMethodSection />
 
-      {/* 04 Strategic Feature Section: 3D Financial Journey Architecture */}
+      {/* 04. Financial Universe — Visual Relationship Map with FINREV at the Center */}
+      <FinancialUniverseSection />
+
+      {/* 05. Financial Journey — Authentic Portrait + BUILD • PROTECT • GROW • PRESERVE */}
       <FinancialJourneySection />
 
-      {/* 05 Key Solutions: Two-Tier Capital Architecture */}
-      <SolutionsMatrix />
-
-      {/* 06 AMC Partners Showcase */}
-      <AMCPartnersSection />
-
-      {/* 07 Planning Tools: Interactive Workbench Simulator & 4 Flagship Calculators */}
+      {/* 06. FINREV Workbench — Analytical Wealth Simulator & 6 Planning Tools */}
       <WorkbenchPreview />
 
-      {/* 08 Founder Commitment & Curated Intelligence */}
-      <FounderInsightsSection />
+      {/* 07. AMC Ecosystem — "Access across leading Asset Management Companies." */}
+      <AMCPartnersSection />
 
-      {/* 09 Action Anchor: Full-Width Consultation Banner */}
-      <ActionAnchor />
+      {/* 08. Human Expertise — "Technology can organize the numbers. Experience puts them into context." */}
+      <HumanExpertiseSection />
+
+      {/* 09. Editorial Insights — Dominant Feature & Supporting Research Links */}
+      <InsightsSection />
+
+      {/* 10. Final Statement — Deep Navy: "Build with clarity. Invest with discipline." */}
+      <FinalStatementSection />
     </>
   );
 }
