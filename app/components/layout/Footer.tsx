@@ -9,47 +9,45 @@ export function Footer() {
       {/* Top Gold & Teal Architectural Separator Line */}
       <div className="finrev-gold-line w-full" aria-hidden="true" />
 
-      {/* Main Footer Grid */}
+      {/* Main Footer Directory */}
       <div className="container-page pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-14">
-          {/* COLUMN 1: Brand & Founder Identity (3 cols) */}
+          {/* COLUMN 1: Brand & Principal Credentials (3 cols) */}
           <div className="lg:col-span-3 flex flex-col gap-4">
             <Link href="/" className="inline-block py-1">
               <Image
                 src={BRAND.logoPath}
                 alt={BRAND.logoAlt}
                 width={170}
-                height={56}
-                className="h-11 w-auto object-contain brightness-0 invert"
+                height={54}
+                className="h-10 w-auto object-contain brightness-0 invert"
               />
             </Link>
-            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--color-finrev-gold-light)] flex items-center gap-2">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-finrev-gold-light)] flex items-center gap-2">
               <span className="finrev-gold-dot shrink-0" aria-hidden="true" />
               <span>{BRAND.tagline}</span>
             </p>
             <p className="text-xs text-slate-300 leading-relaxed">
-              Modern financial planning, mutual fund distribution, and family protection solutions designed around your milestones.
+              Financial planning, mutual fund distribution, and family protection solutions designed around your milestones.
             </p>
 
-            {/* Founder Credentials Badge */}
-            <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col gap-1 text-xs">
-              <span className="font-bold text-white">
+            {/* Principal Credentials — Crisp architectural box */}
+            <div className="p-3 rounded-xs bg-white/[0.03] border border-white/10 flex flex-col gap-1 text-xs">
+              <span className="font-semibold text-white tracking-wide">
                 {REGULATORY.founderName}
               </span>
-              <span className="text-slate-300">
+              <span className="text-slate-300 text-[11px]">
                 Mutual Fund Distributor
               </span>
-              <span
-                className="text-[var(--color-finrev-gold-light)] font-mono font-bold text-[11px] mt-0.5"
-              >
-                AMFI Registered MFD • {REGULATORY.arnNumber}
+              <span className="text-[var(--color-finrev-gold-light)] font-mono font-bold text-[11px] mt-0.5 tracking-wider">
+                AMFI Registered • {REGULATORY.arnNumber}
               </span>
             </div>
           </div>
 
           {/* COLUMN 2: Explore (2 cols) */}
           <div className="lg:col-span-2 flex flex-col gap-3">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-white/90 pb-2 border-b border-white/10">
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/90 pb-2 border-b border-white/10">
               Explore
             </h3>
             <ul className="flex flex-col gap-2.5 text-xs text-slate-300">
@@ -88,7 +86,7 @@ export function Footer() {
 
           {/* COLUMN 3: Solutions (2 cols) */}
           <div className="lg:col-span-2 flex flex-col gap-3">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-white/90 pb-2 border-b border-white/10">
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/90 pb-2 border-b border-white/10">
               Solutions
             </h3>
             <ul className="flex flex-col gap-2.5 text-xs text-slate-300">
@@ -130,9 +128,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* COLUMN 4: Resources (2 cols) */}
+          {/* COLUMN 4: Resources & Calculators (2 cols) */}
           <div className="lg:col-span-2 flex flex-col gap-3">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-white/90 pb-2 border-b border-white/10">
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/90 pb-2 border-b border-white/10">
               Resources
             </h3>
             <ul className="flex flex-col gap-2.5 text-xs text-slate-300">
@@ -172,13 +170,13 @@ export function Footer() {
 
           {/* COLUMN 5: Contact Desk (3 cols) */}
           <div className="lg:col-span-3 flex flex-col gap-3">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-white/90 pb-2 border-b border-white/10">
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/90 pb-2 border-b border-white/10">
               Advisory Desk
             </h3>
             <div className="flex flex-col gap-2.5 text-xs text-slate-300">
               <a
                 href={CONTACT.phoneTel}
-                className="flex items-center gap-2 hover:text-[var(--color-secondary-500)] transition-colors"
+                className="flex items-center gap-2 hover:text-[var(--color-secondary-500)] transition-colors font-mono"
               >
                 <Phone size={13} className="text-[var(--color-finrev-gold-light)] shrink-0" />
                 <span>{CONTACT.phone}</span>
@@ -205,11 +203,11 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Quick Consultation CTA */}
+            {/* Quick Consultation Action */}
             <div className="mt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-white/10 hover:bg-white/15 border border-white/20 text-xs font-bold text-white transition-colors"
+                className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xs bg-white/10 hover:bg-white/15 border border-white/15 text-xs font-semibold text-white transition-colors"
               >
                 <span>Speak with an Expert</span>
                 <ArrowRight size={12} />
@@ -218,8 +216,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Regulatory Governance & Risk Disclaimer */}
-        <div className="p-5 sm:p-6 rounded-xl bg-white/[0.04] border border-white/10">
+        {/* Regulatory Governance & Statutory Risk Notice */}
+        <div className="p-5 sm:p-6 rounded-xs bg-white/[0.03] border border-white/10">
           <div className="flex items-start gap-3">
             <ShieldCheck
               size={20}
@@ -234,7 +232,7 @@ export function Footer() {
                 <strong>Mutual Fund investments are subject to market risks. Read all scheme related documents carefully before investing.</strong>
               </p>
               <p className="text-slate-400 text-[11px]">
-                FINREV SOLUTIONS is an AMFI-registered Mutual Fund Distributor (ARN-195797). We do not provide guaranteed return schemes, assured income products, or fee-based investment advice. Past performance is not indicative of future returns.
+                FINREV SOLUTIONS is an AMFI-registered Mutual Fund Distributor (ARN-195797). We do not provide guaranteed return schemes, assured income products, or fee-based investment advice. Past performance is not indicative of future returns. All mutual fund transactions are routed directly through BSE StAR MF / NSE NMF II to individual asset management companies in the investor’s own name and folio.
               </p>
             </div>
           </div>
@@ -242,10 +240,10 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar: Copyright & Legal Links */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/10 bg-[var(--color-primary-900)]">
         <div className="container-page py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <p>
-            &copy; {SITE.copyrightYear} {BRAND.name}. All rights reserved. {REGULATORY.arnNumber}.
+            &copy; {SITE.copyrightYear} {BRAND.name}. All rights reserved. AMFI Registration: {REGULATORY.arnNumber}.
           </p>
           <div className="flex flex-wrap items-center gap-4 text-xs">
             <Link href="/legal/privacy-policy" className="hover:text-white transition-colors">
@@ -260,7 +258,6 @@ export function Footer() {
             <Link href="/contact" className="hover:text-white transition-colors">
               Contact
             </Link>
-            {/* Social Icons — LinkedIn & WhatsApp */}
             <span className="hidden sm:block w-px h-3 bg-white/20" aria-hidden="true" />
             <a
               href="https://www.linkedin.com/company/finrev-solutions"

@@ -1,58 +1,115 @@
-﻿import { ShieldCheck, Building2, Target, HeartHandshake } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { REGULATORY } from "@/lib/constants";
 
-const TRUST_METRICS = [
-  {
-    icon: ShieldCheck,
-    title: "AMFI Registered MFD",
-    highlight: REGULATORY.arnNumber,
-    description: "Certified Mutual Fund Distributor",
-  },
-  {
-    icon: Building2,
-    title: "Multiple AMCs",
-    highlight: "Comprehensive Access",
-    description: "Leading Fund Houses in India",
-  },
-  {
-    icon: Target,
-    title: "Goal-Mapped Planning",
-    highlight: "Milestone-Driven",
-    description: "Targeted Life-Stage Roadmaps",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Life & Health Protection",
-    highlight: "Capital Defense",
-    description: "Insulated Family Security",
-  },
-];
-
 export function TrustStrip() {
   return (
-    <section className="py-4 bg-white border-b border-[var(--color-border-subtle)]">
+    <section
+      className="bg-white border-b border-[var(--color-border-subtle)]"
+      aria-label="Regulatory Credentials and Capabilities"
+    >
       <Container>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 divide-y sm:divide-y-0 sm:divide-x divide-[var(--color-border-subtle)]">
-          {TRUST_METRICS.map(({ icon: Icon, title, highlight, description }, idx) => (
-            <div
-              key={title}
-              className={`flex items-center gap-3 py-2 px-2 sm:px-4 ${idx !== 0 ? "sm:pl-6" : ""}`}
-            >
-              <Icon size={16} className="text-[var(--color-secondary)] shrink-0" />
-              <div className="min-w-0 flex-1">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-primary)] truncate">
-                  {title}
-                </p>
-                <p className="text-xs font-semibold text-[var(--color-secondary)] truncate">
-                  {highlight}
-                </p>
-                <p className="text-[11px] text-[var(--color-text-muted)] truncate hidden sm:block">
-                  {description}
-                </p>
-              </div>
-            </div>
-          ))}
+        {/* Desktop / Tablet Ribbon: Architectural Horizontal Ribbon with Thin Dividers */}
+        <div className="hidden md:flex items-center justify-between py-3.5 px-2">
+          <div className="flex items-center gap-2">
+            <span className="text-xs lg:text-[13px] font-semibold tracking-wider text-[var(--color-primary)] uppercase">
+              AMFI Registered MFD
+            </span>
+          </div>
+
+          <span
+            className="text-[var(--color-border-strong)] font-light select-none"
+            aria-hidden="true"
+          >
+            |
+          </span>
+
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-xs lg:text-[13px] font-bold text-[var(--color-secondary)] tracking-wider">
+              {REGULATORY.arnNumber}
+            </span>
+          </div>
+
+          <span
+            className="text-[var(--color-border-strong)] font-light select-none"
+            aria-hidden="true"
+          >
+            |
+          </span>
+
+          <div className="flex items-center gap-2">
+            <span className="text-xs lg:text-[13px] font-semibold text-[var(--color-primary)] tracking-wide">
+              Multiple AMC Access
+            </span>
+          </div>
+
+          <span
+            className="text-[var(--color-border-strong)] font-light select-none"
+            aria-hidden="true"
+          >
+            |
+          </span>
+
+          <div className="flex items-center gap-2">
+            <span className="text-xs lg:text-[13px] font-semibold text-[var(--color-primary)] tracking-wide">
+              Goal-Mapped Planning
+            </span>
+          </div>
+
+          <span
+            className="text-[var(--color-border-strong)] font-light select-none"
+            aria-hidden="true"
+          >
+            |
+          </span>
+
+          <div className="flex items-center gap-2">
+            <span className="text-xs lg:text-[13px] font-semibold text-[var(--color-primary)] tracking-wide">
+              Life & Health Protection
+            </span>
+          </div>
+        </div>
+
+        {/* Mobile View: Architectural Ribbon with Thin Dividers & Zero Overflow */}
+        <div className="flex md:hidden flex-wrap items-center justify-center gap-x-2.5 gap-y-2 py-3 px-1 text-center">
+          <span className="text-[11px] font-semibold tracking-wider text-[var(--color-primary)] uppercase">
+            AMFI Registered MFD
+          </span>
+          <span
+            className="text-[var(--color-border-strong)] font-light select-none"
+            aria-hidden="true"
+          >
+            |
+          </span>
+          <span className="font-mono text-[11px] font-bold text-[var(--color-secondary)] tracking-wider">
+            {REGULATORY.arnNumber}
+          </span>
+          <span
+            className="text-[var(--color-border-strong)] font-light select-none"
+            aria-hidden="true"
+          >
+            |
+          </span>
+          <span className="text-[11px] font-semibold text-[var(--color-primary)]">
+            Multiple AMC Access
+          </span>
+          <span
+            className="text-[var(--color-border-strong)] font-light select-none"
+            aria-hidden="true"
+          >
+            |
+          </span>
+          <span className="text-[11px] font-semibold text-[var(--color-primary)]">
+            Goal-Mapped Planning
+          </span>
+          <span
+            className="text-[var(--color-border-strong)] font-light select-none"
+            aria-hidden="true"
+          >
+            |
+          </span>
+          <span className="text-[11px] font-semibold text-[var(--color-primary)]">
+            Life & Health Protection
+          </span>
         </div>
       </Container>
     </section>

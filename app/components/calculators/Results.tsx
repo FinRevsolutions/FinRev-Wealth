@@ -38,11 +38,16 @@ export function PrimaryResultCard({
 
   return (
     <div className="pb-4 border-b border-[var(--color-border-subtle)]">
-      <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-secondary)] block">
-        {label}
-      </span>
+      <div className="flex items-center justify-between">
+        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--color-secondary)]">
+          {label}
+        </span>
+        <span className="text-[10px] font-mono text-[var(--color-text-muted)] uppercase">
+          Illustrative Projection
+        </span>
+      </div>
       <p
-        className={`text-3xl sm:text-4xl font-extrabold ${textColor} mt-1`}
+        className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold ${textColor} mt-1`}
         style={{ fontFamily: "var(--font-mono)" }}
       >
         {displayVal}
@@ -81,16 +86,16 @@ export function MetricCard({
 }: MetricCardProps) {
   const bgClass =
     variant === "emerald"
-      ? "bg-[var(--color-emerald-subtle)] border-[var(--color-border-strong)]"
+      ? "bg-white border-[var(--color-border-strong)]"
       : variant === "amber"
-      ? "bg-[var(--color-amber-subtle)] border-[#fde68a]"
+      ? "bg-white border-[#fde68a]"
       : variant === "navy"
       ? "bg-[var(--color-primary)]/5 border-[var(--color-border-subtle)]"
-      : "bg-[var(--color-surface-canvas)] border-[var(--color-border-subtle)]";
+      : "bg-white border-[var(--color-border-subtle)]";
 
   const textValColor =
     variant === "emerald"
-      ? "text-[var(--color-secondary-500)]"
+      ? "text-[var(--color-secondary)]"
       : variant === "amber"
       ? "text-[var(--color-tertiary)]"
       : variant === "navy"
@@ -100,7 +105,7 @@ export function MetricCard({
   const display = typeof value === "number" ? (isCurrency ? formatExactINR(value) : value.toLocaleString("en-IN")) : value;
 
   return (
-    <div className={`p-3.5 rounded-xl border ${bgClass} transition-colors`}>
+    <div className={`p-3.5 rounded-[4px] border ${bgClass} transition-colors`}>
       <span className="text-[11px] text-[var(--color-text-muted)] font-medium block">
         {label}
       </span>
@@ -143,16 +148,16 @@ export function SplitRatioBar({
   const safeRight = Math.max(0, Math.min(100, 100 - safeLeft));
 
   return (
-    <div className="flex flex-col gap-1.5 my-4">
+    <div className="flex flex-col gap-1.5 my-3">
       <div className="flex justify-between text-xs font-semibold text-[var(--color-text-muted)]">
         <span>
-          {leftLabel} ({safeLeft}%)
+          {leftLabel}: <strong className="text-[var(--color-text-primary)]">{safeLeft}%</strong>
         </span>
         <span>
-          {rightLabel} ({safeRight}%)
+          {rightLabel}: <strong className="text-[var(--color-text-primary)]">{safeRight}%</strong>
         </span>
       </div>
-      <div className="w-full h-3 rounded-full overflow-hidden flex bg-[var(--color-surface-low)]">
+      <div className="w-full h-2 rounded-[2px] overflow-hidden flex bg-[var(--color-surface-canvas)] border border-[var(--color-border-subtle)]">
         <div
           className={`${leftColor} h-full transition-all duration-300`}
           style={{ width: `${safeLeft}%` }}

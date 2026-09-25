@@ -1,55 +1,97 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Activity, ShieldCheck, CheckCircle2, AlertTriangle, HelpCircle, FileText, Search, RefreshCw } from "lucide-react";
+import { ArrowRight, Activity, ShieldCheck, CheckCircle2, AlertTriangle, HelpCircle, FileText, Search, RefreshCw, Layers, SlidersHorizontal, BarChart2 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { createPageMetadata } from "@/lib/metadata";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT, REGULATORY } from "@/lib/constants";
 
 export const metadata: Metadata = createPageMetadata(
-  "Free Portfolio Review & Diagnostic Health Check — FINREV SOLUTIONS",
-  "Audit your existing mutual fund portfolio. Identify scheme overlap, expense ratio drags, and underperformers with AMFI distributor Panchanan Kumar (ARN-195797).",
+  "Portfolio Review & Diagnostic Health Check — FINREV SOLUTIONS",
+  "Audit your existing mutual fund portfolio. Identify stock overlap, expense ratio drag, and persistent underperformers with AMFI distributor Panchanan Kumar (ARN-195797).",
   "/wealth-solutions/portfolio-review"
 );
 
 const AUDIT_STEPS = [
   {
     step: "01",
-    title: "Generate CAMS / KFintech CAS",
-    desc: "Download your free password-protected Consolidated Account Statement (CAS) covering all your mutual fund folios across all AMCs.",
+    title: "Consolidated Statement Intake",
+    subtitle: "CAMS / KFintech CAS Download",
+    description: "Download your official Consolidated Account Statement (CAS) covering all mutual fund folios across all AMCs registered to your PAN.",
+    detail: "Zero paper requirement; password-protected PDF intake directly from official RTAs.",
   },
   {
     step: "02",
-    title: "Deep Diagnostic Audit",
-    desc: "We analyze underlying stock overlaps, category allocation balance, expense ratio drag, and 3/5-year risk-adjusted alpha metrics.",
+    title: "Forensic Factor & Overlap Audit",
+    subtitle: "Stock & Sector Duplication Analysis",
+    description: "We deconstruct underlying portfolio holdings across all your schemes to measure cross-fund stock overlap, market-cap tilt, and sector concentration.",
+    detail: "Uncovers identical mega-cap holdings hiding inside multiple flexi-cap and large-cap funds.",
   },
   {
     step: "03",
-    title: "Rebalancing Blueprint",
-    desc: "Receive an actionable, tax-efficient restructuring plan to consolidate redundant schemes and align allocations with your goals.",
+    title: "Expense & Performance Drag Check",
+    subtitle: "Benchmark Alpha vs Total Expense Ratio (TER)",
+    description: "Evaluation of 3-year and 5-year rolling alpha against respective Total Return Benchmarks (TRI) to flag chronic quartile-4 underperformers.",
+    detail: "Quantifies cumulative fee leakage from high-cost schemes that consistently trail indices.",
+  },
+  {
+    step: "04",
+    title: "Phased Realignment Blueprint",
+    subtitle: "Tax-Aware Restructuring Plan",
+    description: "Creation of a phased rebalancing schedule to consolidate fragmented holdings into 4–6 high-conviction funds without incurring unnecessary exit loads or taxes.",
+    detail: "Prioritizes grandfathered holdings and staggered redemption schedules.",
+  },
+];
+
+const COMPARISON_VECTORS = [
+  {
+    vector: "Portfolio Breadth & Complexity",
+    unmanaged: "15 to 30+ scattered funds accumulated through random tips and sporadic NFO investments.",
+    optimized: "4 to 6 focused, high-conviction schemes structured with clean Core and Satellite mandates.",
+  },
+  {
+    vector: "Underlying Stock Redundancy",
+    unmanaged: "60%–75% common stock overlap; holding the same top 20 bluechips across multiple funds.",
+    optimized: "Under 25% factor overlap; schemes with complementary investment styles (Growth, Value, Blend).",
+  },
+  {
+    vector: "Fee Drag & Expense Leakage",
+    unmanaged: "Paying full management fees for chronic bottom-quartile schemes dragging overall performance.",
+    optimized: "Every allocated basis point is justified by persistent risk-adjusted category outperformance.",
+  },
+  {
+    vector: "Asset Allocation Governance",
+    unmanaged: "Ad-hoc, unmapped allocations without rebalancing; equity exposure swings with market emotions.",
+    optimized: "Strict milestone glide path with annual rebalancing bands and systematic de-risking.",
+  },
+  {
+    vector: "Exit & Tax Coordination",
+    unmanaged: "Random redemptions triggering short-term capital gains tax and premature exit load penalties.",
+    optimized: "Calculated harvest schedules respecting STCG/LTCG holding windows and annual tax exemptions.",
   },
 ];
 
 const FAQS = [
   {
-    q: "Is there any cost or fee for the portfolio review?",
-    a: "No. FINREV provides an initial comprehensive portfolio diagnostic audit on a complimentary basis to identify structural inefficiencies and help you understand your current portfolio health.",
+    q: "Is there any commercial fee for the portfolio diagnostic review?",
+    a: "FINREV SOLUTIONS provides an initial portfolio health check on a complimentary basis for prospective clients to identify structural redundancies and establish baseline asset allocation health.",
   },
   {
-    q: "What is Fund Overlap and why is it dangerous?",
-    a: "When an investor buys 5 different large cap or flexi cap mutual funds, they often discover that all 5 schemes hold the exact same 25 bluechip stocks (e.g. Reliance, HDFC Bank, ICICI Bank, Infosys). You are paying multiple expense ratios for identical holdings without receiving any true diversification benefit.",
+    q: "What is Fund Overlap and why is it detrimental to compounding?",
+    a: "When an investor buys multiple mutual funds in the same broad category (e.g. 3 Flexi Cap funds and 2 Large & Mid Cap funds), they typically find that all 5 schemes hold the exact same 25 bluechip stocks (Reliance, HDFC Bank, ICICI Bank, Infosys, TCS). The investor pays multiple management fees for duplicate portfolios without receiving genuine diversification.",
   },
   {
-    q: "Will I have to sell all my existing funds?",
-    a: "Not necessarily. Good, high-governance schemes that align with your goals and deliver consistent risk-adjusted alpha are retained. Restructuring is carried out gradually to minimize capital gains tax and avoid exit load penalties.",
+    q: "Will an audit require selling all my existing mutual fund holdings?",
+    a: "No. Quality mutual fund schemes that demonstrate consistent category alpha and align with your target risk profile are retained. Restructuring recommendations are executed in phased tranches to avoid premature exit loads and minimize capital gains tax friction.",
   },
 ];
 
 export default function PortfolioReviewPage() {
   return (
-    <div className="py-12 md:py-20 bg-[var(--color-surface-canvas)] min-h-screen">
+    <div className="py-10 md:py-16 bg-[var(--color-surface-canvas)] min-h-screen">
       <Container>
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-[var(--color-text-muted)] mb-8">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-[var(--color-text-muted)] mb-6">
           <Link href="/" className="hover:text-[var(--color-text-primary)] transition-colors">Home</Link>
           <span>/</span>
           <Link href="/wealth-solutions" className="hover:text-[var(--color-text-primary)] transition-colors">Wealth Solutions</Link>
@@ -57,177 +99,140 @@ export default function PortfolioReviewPage() {
           <span className="text-[var(--color-text-primary)]">Portfolio Review</span>
         </nav>
 
-        <div className="max-w-4xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--color-emerald-subtle)] text-[var(--color-secondary)] text-xs font-bold rounded border border-[var(--color-border-strong)] mb-3">
-            <Activity size={14} />
-            <span>Complimentary Diagnostic Audit</span>
+        {/* Hero Section */}
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-primary)] mb-2">
+            <Activity size={13} className="text-[var(--color-secondary)]" />
+            <span>Diagnostic Folio Audit</span>
+            <span className="text-[var(--color-secondary)]">•</span>
+            <span className="font-mono text-[var(--color-secondary)]">{REGULATORY.arnNumber}</span>
           </div>
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight mt-1"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Portfolio Health Check & Review
+            Portfolio Health Check & Diagnostic Review
           </h1>
-          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-3xl">
-            Over years of random fund accumulation, most portfolios develop severe scheme overlap, high expense ratios,
-            and unmanaged risk drags. We perform an empirical audit of your holdings and provide an actionable realignment plan.
+          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mt-3 leading-relaxed">
+            Over years of sporadic investing, most portfolios accumulate duplicate holdings, excessive fee drag,
+            and unmanaged sector risks. We conduct an objective forensic audit of your mutual fund folios.
           </p>
         </div>
 
-        {/* 3 Step Review Process */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {AUDIT_STEPS.map((s) => (
-            <div key={s.step} className="bg-white p-7 rounded-2xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] flex flex-col justify-between">
-              <div>
-                <span className="text-xs font-bold text-[var(--color-secondary)] bg-[var(--color-emerald-subtle)] px-2.5 py-0.5 rounded border border-[var(--color-border-strong)] inline-block mb-4" style={{ fontFamily: "var(--font-mono)" }}>
-                  Step {s.step}
-                </span>
-                <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
-                  {s.title}
-                </h3>
-                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                  {s.desc}
-                </p>
-              </div>
+        {/* 4-STEP DIAGNOSTIC PROTOCOL: Structured Rows */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Audit Methodology</span>
+              <h2 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+                The 4-Stage Diagnostic Framework
+              </h2>
             </div>
-          ))}
+            <span className="text-xs text-[var(--color-text-muted)] font-mono">Forensic Folio Analysis</span>
+          </div>
+
+          <div className="space-y-6 divide-y divide-[var(--color-border-subtle)]">
+            {AUDIT_STEPS.map((s, idx) => (
+              <div key={s.step} className={idx > 0 ? "pt-6" : ""}>
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                  <div className="md:w-1/3">
+                    <span className="font-mono text-xs font-bold text-[var(--color-secondary)] uppercase tracking-wider block mb-1">
+                      Stage {s.step} • {s.subtitle}
+                    </span>
+                    <h3 className="text-base font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+                      {s.title}
+                    </h3>
+                  </div>
+                  <div className="md:w-2/3 space-y-2 text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                    <p>{s.description}</p>
+                    <div className="p-2.5 bg-[var(--color-surface-low)] border border-[var(--color-border-subtle)] rounded-[2px] text-[11px] font-mono text-[var(--color-primary)]">
+                      <strong>Audit Focus:</strong> {s.detail}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Portfolio Diagnostic Comparison Matrix */}
-        <div className="bg-white rounded-2xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] p-6 md:p-8 mb-16 overflow-hidden">
-          <SectionLabel>Empirical Health Check</SectionLabel>
-          <h3 className="text-xl md:text-2xl font-bold text-[var(--color-text-primary)] mt-1 mb-6" style={{ fontFamily: "var(--font-heading)" }}>
-            Unmanaged Folio Traps vs. The FINREV Optimized Portfolio
-          </h3>
+        {/* COMPARATIVE ANALYSIS TABLE: Unmanaged vs Optimized */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6">
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Portfolio Architecture</span>
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
+              Comparative Assessment: Unmanaged Fragmented Folios vs. FINREV Architecture
+            </h2>
+          </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-xs text-left border-collapse min-w-[580px]">
+            <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]">
-                  <th className="py-3 px-4 font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px] w-1/4">Diagnostic Vector</th>
-                  <th className="py-3 px-4 font-bold text-red-600 uppercase tracking-wider text-[11px] w-3/8">Typical Unmanaged Folio</th>
-                  <th className="py-3 px-4 font-bold text-[var(--color-secondary)] uppercase tracking-wider text-[11px] w-3/8">FINREV Optimized Architecture</th>
+                <tr className="border-b border-[var(--color-border-subtle)] text-[var(--color-text-muted)] uppercase tracking-wider font-semibold">
+                  <th className="py-3 px-3 w-1/4">Diagnostic Vector</th>
+                  <th className="py-3 px-3 w-3/8 text-amber-900">Unmanaged Fragmented Folio</th>
+                  <th className="py-3 px-3 w-3/8 text-[var(--color-primary)]">FINREV Optimized Architecture</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[var(--color-border-subtle)]">
-                <tr className="hover:bg-[var(--color-surface-subtle)]/40 transition-colors">
-                  <td className="py-3.5 px-4 font-bold text-[var(--color-text-primary)]">Number of Schemes</td>
-                  <td className="py-3.5 px-4 text-[var(--color-text-secondary)]">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-red-50 text-red-700 font-semibold mb-1">18 to 35+ Mutual Funds</span>
-                    <p className="text-[11px] text-[var(--color-text-muted)]">Accumulated over years of haphazard tips; tracking nightmare.</p>
-                  </td>
-                  <td className="py-3.5 px-4 text-[var(--color-text-primary)]">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 font-semibold mb-1">5 to 8 High-Conviction Schemes</span>
-                    <p className="text-[11px] text-[var(--color-text-muted)]">Purpose-built core-and-satellite structure with zero clutter.</p>
-                  </td>
-                </tr>
-                <tr className="hover:bg-[var(--color-surface-subtle)]/40 transition-colors">
-                  <td className="py-3.5 px-4 font-bold text-[var(--color-text-primary)]">Stock Overlap Drag</td>
-                  <td className="py-3.5 px-4 text-[var(--color-text-secondary)]">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-red-50 text-red-700 font-semibold mb-1">60%–75% Portfolio Redundancy</span>
-                    <p className="text-[11px] text-[var(--color-text-muted)]">Holding identical mega-caps across 6 different flexi/large caps.</p>
-                  </td>
-                  <td className="py-3.5 px-4 text-[var(--color-text-primary)]">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 font-semibold mb-1">Under 25% Factor Overlap</span>
-                    <p className="text-[11px] text-[var(--color-text-muted)]">Complementary investment styles (Growth, Quality, Value/Contrarian).</p>
-                  </td>
-                </tr>
-                <tr className="hover:bg-[var(--color-surface-subtle)]/40 transition-colors">
-                  <td className="py-3.5 px-4 font-bold text-[var(--color-text-primary)]">Expense Ratio Drag</td>
-                  <td className="py-3.5 px-4 text-[var(--color-text-secondary)]">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-red-50 text-red-700 font-semibold mb-1">Heavy Drag from Laggard Funds</span>
-                    <p className="text-[11px] text-[var(--color-text-muted)]">Paying full fees for persistent bottom-quartile category performers.</p>
-                  </td>
-                  <td className="py-3.5 px-4 text-[var(--color-text-primary)]">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 font-semibold mb-1">Rigorous Alpha Justification</span>
-                    <p className="text-[11px] text-[var(--color-text-muted)]">Only AMCs delivering consistent risk-adjusted alpha retain allocation.</p>
-                  </td>
-                </tr>
-                <tr className="hover:bg-[var(--color-surface-subtle)]/40 transition-colors">
-                  <td className="py-3.5 px-4 font-bold text-[var(--color-text-primary)]">Market Timing & Panic</td>
-                  <td className="py-3.5 px-4 text-[var(--color-text-secondary)]">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-red-50 text-red-700 font-semibold mb-1">Stopping SIPs in Corrections</span>
-                    <p className="text-[11px] text-[var(--color-text-muted)]">Selling low out of fear; buying speculative themes at peak valuations.</p>
-                  </td>
-                  <td className="py-3.5 px-4 text-[var(--color-text-primary)]">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 font-semibold mb-1">Goal-Linked Glide-Path Discipline</span>
-                    <p className="text-[11px] text-[var(--color-text-muted)]">Automated rebalancing, buying dips systematically, de-risking near goals.</p>
-                  </td>
-                </tr>
+              <tbody className="divide-y divide-[var(--color-border-subtle)] font-medium text-[var(--color-text-secondary)]">
+                {COMPARISON_VECTORS.map((row) => (
+                  <tr key={row.vector}>
+                    <td className="py-3.5 px-3 font-semibold text-[var(--color-text-primary)]">{row.vector}</td>
+                    <td className="py-3.5 px-3 text-xs leading-relaxed text-amber-950 bg-amber-50/20">{row.unmanaged}</td>
+                    <td className="py-3.5 px-3 text-xs leading-relaxed font-semibold text-[var(--color-primary)] bg-emerald-50/10">{row.optimized}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
 
-        {/* What We Check During an Audit */}
-        <div className="bg-white rounded-2xl p-8 border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] mb-16">
-          <SectionLabel>Audit Scope</SectionLabel>
-          <h3 className="text-xl font-bold text-[var(--color-text-primary)] mt-1 mb-6" style={{ fontFamily: "var(--font-heading)" }}>
-            What Our Diagnostic Report Uncovers
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { title: "Underlying Stock Overlap", desc: "Identifies identical company holdings across multiple fund schemes." },
-              { title: "Expense Ratio Leakage", desc: "Calculates total annual expense ratio drag against category benchmarks." },
-              { title: "Category Misalignment", desc: "Detects hidden sector risks and excessive small cap or thematic exposure." },
-              { title: "Consistent Underperformers", desc: "Flags funds lagging their respective TRI benchmark over 3 and 5 years." },
-            ].map((item) => (
-              <div key={item.title} className="p-4 rounded-xl bg-[var(--color-surface-canvas)] border border-[var(--color-border-subtle)]">
-                <CheckCircle2 size={16} className="text-[var(--color-secondary)] mb-2" />
-                <h4 className="text-xs font-bold text-[var(--color-text-primary)] mb-1">{item.title}</h4>
-                <p className="text-[11px] text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* FAQs */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-6" style={{ fontFamily: "var(--font-heading)" }}>
-            Frequently Asked Questions
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6">
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+              Frequently Asked Questions on Portfolio Reviews
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {FAQS.map((faq) => (
-              <div key={faq.q} className="p-5 bg-white rounded-xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)]">
-                <div className="flex items-start gap-2 mb-2">
-                  <HelpCircle size={16} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
-                  <h4 className="text-sm font-bold text-[var(--color-text-primary)] leading-snug">{faq.q}</h4>
+              <div key={faq.q} className="border-b border-[var(--color-border-subtle)] pb-4">
+                <div className="flex items-start gap-2 mb-1.5">
+                  <HelpCircle size={14} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
+                  <h3 className="text-xs font-bold text-[var(--color-text-primary)] leading-snug">{faq.q}</h3>
                 </div>
-                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed pl-6">{faq.a}</p>
+                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed pl-5">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-[var(--color-primary)] text-white rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl mb-12">
-          <div className="max-w-xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-secondary-fixed)] block mb-1">
-              Complimentary Review
-            </span>
-            <h3 className="text-2xl font-bold text-white tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-              Submit Your CAS for a Free Portfolio Health Check
+        {/* Action Panel */}
+        <div className="bg-[var(--color-surface-container-highest)] border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
+          <div>
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Diagnostic Review Desk</span>
+            <h3 className="text-lg font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
+              Request a Comprehensive Portfolio Diagnostic
             </h3>
-            <p className="text-xs text-white/70 mt-2 leading-relaxed">
-              Email your statement to {CONTACT.email} or schedule a confidential call with Panchanan Kumar.
+            <p className="text-xs text-[var(--color-text-secondary)] mt-1 max-w-xl">
+              Share your CAMS / KFintech Consolidated Account Statement securely with Panchanan Kumar (ARN-195797).
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="px-7 py-3.5 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-700)] text-white text-xs font-bold rounded-xl text-center shrink-0 shadow-md transition-colors inline-flex items-center gap-2"
-          >
-            <span>Request Portfolio Review</span>
-            <ArrowRight size={14} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-xs font-semibold text-white rounded-[4px] hover:bg-[var(--color-primary-800)] transition-colors"
+            >
+              <span>Submit CAS for Review</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
 
-        {/* Compliance Footer */}
-        <div className="p-4 rounded-xl bg-white border border-[var(--color-border-subtle)] flex items-start gap-3 text-xs text-[var(--color-text-muted)]">
-          <ShieldCheck size={18} className="text-[var(--color-text-muted)] shrink-0 mt-0.5" />
+        {/* Regulatory Disclosure */}
+        <div className="p-4 bg-white border border-[var(--color-border-subtle)] rounded-[4px] flex items-start gap-3 text-xs text-[var(--color-text-muted)]">
+          <ShieldCheck size={16} className="shrink-0 mt-0.5 text-[var(--color-secondary)]" />
           <p className="leading-relaxed">
-            <strong>Statutory Disclosure:</strong> Mutual fund investments are subject to market risks.
-            Read all scheme related documents carefully before investing. A portfolio review does not guarantee future returns.
-            FINREV SOLUTIONS is an AMFI-registered Mutual Fund Distributor (ARN-195797).
+            <strong>Statutory Disclosure:</strong> Mutual fund investments are subject to market risks. Read all scheme related documents carefully before investing. A portfolio health check is an analytical diagnostic tool and does not assure or guarantee future investment returns. FINREV SOLUTIONS is an AMFI-registered Mutual Fund Distributor (ARN-195797).
           </p>
         </div>
       </Container>

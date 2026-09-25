@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronDown, Phone, X, LogIn } from "lucide-react";
 import { PRIMARY_NAV, type NavGroup } from "@/lib/navigation";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT, REGULATORY } from "@/lib/constants";
 
 interface MobileNavProps {
   id: string;
@@ -27,7 +27,7 @@ function AccordionItem({
       <Link
         href={group.href}
         onClick={onClose}
-        className="flex items-center justify-between w-full px-4 py-3.5 text-base font-semibold text-[var(--color-text-primary)] border-b border-[var(--color-border-subtle)] hover:bg-[var(--color-surface-low)] transition-colors"
+        className="flex items-center justify-between w-full px-4 py-3.5 text-sm font-semibold text-[var(--color-text-primary)] border-b border-[var(--color-border-subtle)] hover:bg-[var(--color-surface-low)] transition-colors"
       >
         {group.label}
       </Link>
@@ -39,12 +39,12 @@ function AccordionItem({
       <button
         aria-expanded={expanded}
         onClick={() => setExpanded((v) => !v)}
-        className="flex items-center justify-between w-full px-4 py-3.5 text-base font-semibold text-[var(--color-text-primary)] hover:bg-[var(--color-surface-low)] transition-colors"
+        className="flex items-center justify-between w-full px-4 py-3.5 text-sm font-semibold text-[var(--color-text-primary)] hover:bg-[var(--color-surface-low)] transition-colors cursor-pointer"
       >
         {group.label}
         <ChevronDown
-          size={16}
-          className={`transition-transform duration-200 text-[var(--color-text-muted)] ${expanded ? "rotate-180" : ""}`}
+          size={15}
+          className={`transition-transform duration-150 text-[var(--color-text-muted)] ${expanded ? "rotate-180 text-[var(--color-secondary)]" : ""}`}
         />
       </button>
       {expanded && (
@@ -54,13 +54,13 @@ function AccordionItem({
               key={item.href}
               href={item.href}
               onClick={onClose}
-              className="flex flex-col px-6 py-3 hover:bg-[var(--color-surface-low)] transition-colors"
+              className="flex flex-col px-6 py-2.5 hover:bg-white border-l-2 border-transparent hover:border-[var(--color-secondary)] transition-colors"
             >
-              <span className="text-sm font-semibold text-[var(--color-text-primary)]">
+              <span className="text-xs font-semibold text-[var(--color-text-primary)]">
                 {item.label}
               </span>
               {item.description && (
-                <span className="text-xs text-[var(--color-text-muted)] mt-0.5">
+                <span className="text-[11px] text-[var(--color-text-muted)] mt-0.5">
                   {item.description}
                 </span>
               )}
@@ -90,7 +90,7 @@ export function MobileNav({ id, open, onClose }: MobileNavProps) {
       {open && (
         <div
           aria-hidden="true"
-          className="fixed inset-0 z-40 bg-[var(--color-on-surface)]/40 backdrop-blur-sm xl:hidden"
+          className="fixed inset-0 z-40 bg-[var(--color-primary)]/50 backdrop-blur-xs xl:hidden"
           onClick={onClose}
         />
       )}
@@ -102,24 +102,29 @@ export function MobileNav({ id, open, onClose }: MobileNavProps) {
         aria-modal="true"
         aria-label="Navigation menu"
         className={[
-          "fixed top-0 right-0 bottom-0 z-50 w-[min(85vw,360px)]",
-          "bg-[var(--color-surface-card)] shadow-[var(--shadow-modal)]",
+          "fixed top-0 right-0 bottom-0 z-50 w-[min(85vw,340px)]",
+          "bg-white shadow-[var(--shadow-modal)]",
           "flex flex-col xl:hidden",
-          "transition-transform duration-300 ease-in-out",
+          "transition-transform duration-200 ease-in-out",
           open ? "translate-x-0" : "translate-x-full invisible pointer-events-none",
         ].join(" ")}
       >
         {/* Drawer Header */}
-        <div className="flex items-center justify-between px-4 py-4 border-b border-[var(--color-border-subtle)]">
-          <span className="text-sm font-bold text-[var(--color-primary)] uppercase tracking-wider">
-            Navigation
-          </span>
+        <div className="flex items-center justify-between px-4 py-3.5 border-b border-[var(--color-border-subtle)] bg-[var(--color-surface-canvas)]">
+          <div>
+            <span className="text-xs font-bold text-[var(--color-primary)] uppercase tracking-wider block">
+              Menu Directory
+            </span>
+            <span className="text-[10px] text-[var(--color-secondary)] font-mono font-semibold">
+              {REGULATORY.arnNumber}
+            </span>
+          </div>
           <button
             aria-label="Close navigation"
             onClick={onClose}
-            className="p-2 rounded text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-low)] transition-colors"
+            className="p-1.5 rounded-xs text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-white transition-colors cursor-pointer"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
@@ -138,25 +143,25 @@ export function MobileNav({ id, open, onClose }: MobileNavProps) {
           <Link
             href="/client/login"
             onClick={onClose}
-            className="flex items-center justify-center gap-2 w-full py-3 bg-white border border-[var(--color-border-strong)] rounded-xl text-xs font-bold text-[var(--color-primary)] hover:bg-[var(--color-surface-low)] transition-colors shadow-2xs"
+            className="flex items-center justify-center gap-2 w-full py-2.5 bg-white border border-[var(--color-border-subtle)] rounded-xs text-xs font-semibold text-[var(--color-primary)] hover:border-[var(--color-secondary)] transition-colors shadow-2xs"
           >
-            <LogIn size={15} className="text-[var(--color-secondary)]" />
-            <span>Secure Client Portal Login</span>
+            <LogIn size={14} className="text-[var(--color-secondary)]" />
+            <span>Client Portal</span>
           </Link>
 
           <Link
             href="/contact"
             onClick={onClose}
-            className="flex items-center justify-center gap-2 w-full py-3 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-700)] text-white text-xs font-bold rounded-xl transition-colors shadow-sm"
+            className="flex items-center justify-center gap-2 w-full py-2.5 bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] text-white text-xs font-semibold rounded-xs transition-colors"
           >
-            <Phone size={14} />
+            <Phone size={13} className="text-[var(--color-finrev-gold-light)]" />
             <span>Speak with an Expert</span>
           </Link>
           <a
             href={CONTACT.phoneTel}
-            className="text-center text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors pt-1"
+            className="text-center text-[11px] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors pt-0.5 font-mono"
           >
-            Direct Desk: {CONTACT.phone}
+            Desk: {CONTACT.phone}
           </a>
         </div>
       </div>

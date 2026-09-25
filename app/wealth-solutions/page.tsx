@@ -4,6 +4,7 @@ import { ArrowRight, Compass, GraduationCap, Home, Clock, Activity, Target, Shie
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { createPageMetadata } from "@/lib/metadata";
+import { REGULATORY } from "@/lib/constants";
 
 export const metadata: Metadata = createPageMetadata(
   "Wealth Solutions & Milestone Planning — Goal-Based Portfolios",
@@ -15,31 +16,31 @@ const SOLUTIONS = [
   {
     icon: Compass,
     title: "Goal-Based Investing",
-    horizon: "3 to 15 Years",
+    horizon: "3 to 15 Years Horizon",
     tagline: "Milestone-Driven Asset Allocation",
-    desc: "Connect every invested rupee to an exact life objective — home down-payment, sabbatical fund, marriage, or family security.",
+    desc: "Connect every invested rupee to an exact life milestone—home purchase, sabbatical fund, marriage, or family security.",
     href: "/wealth-solutions/goal-based-investing",
   },
   {
     icon: Clock,
     title: "Retirement Planning & SWP",
-    horizon: "15 to 30 Years",
+    horizon: "15 to 30 Years Horizon",
     tagline: "Financial Independence Architecture",
-    desc: "Build an inflation-hedged retirement corpus and implement tax-efficient Systematic Withdrawal Plans (SWP) for lifetime monthly income.",
+    desc: "Build an inflation-hedged retirement corpus and implement tax-aware Systematic Withdrawal Plans (SWP) for lifetime monthly income.",
     href: "/wealth-solutions/retirement-planning",
   },
   {
     icon: GraduationCap,
     title: "Child Higher Education Planning",
-    horizon: "10 to 18 Years",
+    horizon: "10 to 18 Years Horizon",
     tagline: "Higher Education Inflation Defense",
-    desc: "Targeted compounding strategies engineered to beat 10%+ annual higher education cost increases for Indian and foreign universities.",
+    desc: "Targeted compounding strategies engineered to beat 10%+ annual higher education cost escalation for Indian and foreign universities.",
     href: "/wealth-solutions/child-education",
   },
   {
     icon: Target,
     title: "Long-Term Wealth Creation",
-    horizon: "10+ Years",
+    horizon: "10+ Years Horizon",
     tagline: "Generational Multi-Cap Compounding",
     desc: "High-equity multi-cycle compounding strategies designed to capture the structural growth of India's formalizing economy.",
     href: "/wealth-solutions/wealth-creation",
@@ -47,151 +48,190 @@ const SOLUTIONS = [
   {
     icon: Activity,
     title: "Portfolio Health Check & Review",
-    horizon: "Immediate Audit",
-    tagline: "Diagnostic Scheme Optimization",
-    desc: "Audit existing mutual fund portfolios to identify scheme overlap, high expense ratios, and historical benchmark lag.",
+    horizon: "Immediate Diagnostic Audit",
+    tagline: "Forensic Scheme Optimization",
+    desc: "Audit existing mutual fund portfolios to identify scheme overlap, high expense ratios, and persistent benchmark lag.",
+    href: "/wealth-solutions/portfolio-review",
+  },
+];
+
+const LIFE_STAGES = [
+  {
+    stage: "Stage 01",
+    phase: "Early Career & Foundation",
+    age: "Age 22 to 32",
+    tagline: "High Risk Tolerance • Multi-Decade Horizon",
+    description: "Build a 6-month liquid emergency reserve. Deploy remaining surplus aggressively into diversified equity SIPs to harness maximum compound runway.",
+    allocation: "80% Equity • 20% Liquid / Debt Buffer",
+    href: "/wealth-solutions/wealth-creation",
+  },
+  {
+    stage: "Stage 02",
+    phase: "Wealth Accumulation & First Home",
+    age: "Age 30 to 42",
+    tagline: "Surplus Acceleration • Capital Expansion",
+    description: "Scale up SIP contributions with annual appraisal step-ups. Partition savings into distinct buckets for home down-payment and long-term corpus.",
+    allocation: "70% Equity • 25% Balanced/Hybrid • 5% Liquid",
+    href: "/wealth-solutions/goal-based-investing",
+  },
+  {
+    stage: "Stage 03",
+    phase: "Family Milestones & Child Education",
+    age: "Age 38 to 50",
+    tagline: "Peak Commitments • High Inflation Defense",
+    description: "Higher education inflation runs at 10%+ in India. Construct targeted equity portfolios that gradually shift into liquid debt 2 years before college.",
+    allocation: "60% Equity • 30% Debt/Fixed Income • 10% Gold/Hybrid",
+    href: "/wealth-solutions/child-education",
+  },
+  {
+    stage: "Stage 04",
+    phase: "Pre-Retirement Consolidation",
+    age: "Age 48 to 58",
+    tagline: "Capital Preservation • Glidepath De-Risking",
+    description: "Systematically migrate equity gains into high-grade corporate bonds and target maturity debt to insulate the retirement corpus from market crashes.",
+    allocation: "45% Equity • 45% Debt & Bonds • 10% Liquid",
+    href: "/wealth-solutions/retirement-planning",
+  },
+  {
+    stage: "Stage 05",
+    phase: "Retirement Distribution & Cashflow",
+    age: "Age 58+",
+    tagline: "Inflation-Proof Drawdowns • Capital Longevity",
+    description: "Implement 3-Bucket Systematic Withdrawal Plans (SWP) to generate predictable monthly cashflows that incur lower effective tax than bank fixed deposits.",
+    allocation: "30% Large-Cap Equity (Inflation Hedge) • 60% Debt • 10% Liquid Cash",
+    href: "/wealth-solutions/retirement-planning",
+  },
+  {
+    stage: "Stage 06",
+    phase: "Generational Legacy & Succession",
+    age: "Multi-Decade",
+    tagline: "Family Estate Continuity • Nomination Governance",
+    description: "Ensure seamless transmission of family wealth through comprehensive mutual fund nomination audits, joint holding structures, and clear succession planning.",
+    allocation: "Preserved Portfolio Core • Institutional Mandates",
     href: "/wealth-solutions/portfolio-review",
   },
 ];
 
 export default function WealthSolutionsHubPage() {
   return (
-    <div className="py-12 md:py-20 bg-[var(--color-surface-canvas)] min-h-screen">
+    <div className="py-10 md:py-16 bg-[var(--color-surface-canvas)] min-h-screen">
       <Container>
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-[var(--color-text-muted)] mb-8">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-[var(--color-text-muted)] mb-6">
           <Link href="/" className="hover:text-[var(--color-text-primary)] transition-colors">Home</Link>
           <span>/</span>
           <span className="text-[var(--color-text-primary)]">Wealth Solutions</span>
         </nav>
 
-        <div className="max-w-4xl mb-14">
-          <SectionLabel>Pillar 02: Plan</SectionLabel>
+        {/* Hero Section */}
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-primary)] mb-2">
+            <Compass size={13} className="text-[var(--color-secondary)]" />
+            <span>Consultative Planning Experience</span>
+            <span className="text-[var(--color-secondary)]">•</span>
+            <span className="font-mono text-[var(--color-secondary)]">{REGULATORY.arnNumber}</span>
+          </div>
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight mt-2"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight mt-1"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Milestone-Driven Wealth Solutions
           </h1>
-          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-3xl">
-            True financial success is not about chasing the highest return last month. It is about having the exact
-            required capital available on the exact date your life milestones arrive.
+          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mt-3 leading-relaxed">
+            True financial clarity is not about chasing speculative returns. It is having the exact required capital
+            available on the exact date your family milestones arrive.
           </p>
         </div>
 
-        {/* Life-Stage Wealth Architecture Timeline */}
-        <div className="bg-white rounded-2xl p-7 md:p-10 border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] mb-16">
-          <div className="max-w-2xl mb-8">
-            <SectionLabel>Milestone Lifecycle</SectionLabel>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)] mt-1.5" style={{ fontFamily: "var(--font-heading)" }}>
+        {/* SOLUTIONS OVERVIEW: Structured Rows (Not repetitive cards) */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Milestone Matrix</span>
+              <h2 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+                Core Advisory Planning Disciplines
+              </h2>
+            </div>
+            <span className="text-xs text-[var(--color-text-muted)] font-mono">5 Specialized Practice Areas</span>
+          </div>
+
+          <div className="space-y-6 divide-y divide-[var(--color-border-subtle)]">
+            {SOLUTIONS.map((sol, idx) => {
+              const IconComp = sol.icon;
+              return (
+                <div key={sol.title} className={idx > 0 ? "pt-6" : ""}>
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                    <div className="md:w-1/3">
+                      <div className="flex items-center gap-2 text-xs font-mono text-[var(--color-secondary)] font-semibold mb-1">
+                        <IconComp size={14} />
+                        <span>{sol.horizon}</span>
+                      </div>
+                      <h3 className="text-base font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+                        {sol.title}
+                      </h3>
+                      <span className="text-xs text-[var(--color-text-muted)]">{sol.tagline}</span>
+                    </div>
+                    <div className="md:w-2/3 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed max-w-lg">
+                        {sol.desc}
+                      </p>
+                      <Link
+                        href={sol.href}
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-primary)] hover:text-[var(--color-secondary)] shrink-0"
+                      >
+                        <span>Explore Solution</span>
+                        <ArrowRight size={12} />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* LIFE-STAGE WEALTH ARCHITECTURE TIMELINE */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6">
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Lifecycle Evolution</span>
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
               The FINREV Life-Stage Wealth Framework
             </h2>
-            <p className="text-xs sm:text-sm text-[var(--color-text-muted)] mt-1">
-              Your investment asset allocation should evolve dynamically as your family responsibilities and horizons advance.
+            <p className="text-xs text-[var(--color-text-muted)] mt-1">
+              Your investment asset allocation should evolve dynamically as family responsibilities and horizons advance.
             </p>
           </div>
 
           <div className="space-y-4">
-            {[
-              {
-                stage: "01",
-                phase: "EARLY CAREER & FOUNDATION",
-                age: "Age 22 – 32",
-                tagline: "High Risk Tolerance • Multi-Decade Horizon",
-                description:
-                  "Build a 6-month liquid emergency reserve. Deploy remaining investable surplus aggressively into diversified equity SIPs to harness maximum compound runway.",
-                allocation: "80% Equity • 20% Liquid / Debt Buffer",
-                recommended: "Automated Monthly SIP • ELSS Tax Saving",
-                href: "/wealth-solutions/wealth-creation",
-              },
-              {
-                stage: "02",
-                phase: "WEALTH ACCUMULATION & FIRST HOME",
-                age: "Age 30 – 42",
-                tagline: "Surplus Acceleration • Capital Expansion",
-                description:
-                  "Scale up SIP contributions with annual appraisal step-ups. Partition savings into distinct buckets for home down-payment, vehicle acquisition, and long-term corpus.",
-                allocation: "70% Equity • 25% Balanced/Hybrid • 5% Liquid",
-                recommended: "Step-Up SIP • Goal-Based Portfolios",
-                href: "/wealth-solutions/goal-based-investing",
-              },
-              {
-                stage: "03",
-                phase: "FAMILY RESPONSIBILITIES & CHILD EDUCATION",
-                age: "Age 38 – 50",
-                tagline: "Peak Commitments • High Inflation Defense",
-                description:
-                  "Higher education inflation runs at 10%–12% per annum in India. Construct targeted equity portfolios that gradually shift into liquid debt 2 years before university matriculation.",
-                allocation: "60% Equity • 30% Debt/Fixed Income • 10% Gold/Hybrid",
-                recommended: "Child Higher Education Fund • Target Maturity Funds",
-                href: "/wealth-solutions/child-education",
-              },
-              {
-                stage: "04",
-                phase: "PRE-RETIREMENT CONSOLIDATION",
-                age: "Age 48 – 58",
-                tagline: "Capital Preservation • Glidepath De-Risking",
-                description:
-                  "Systematically migrate high-beta equity gains into high-grade corporate bonds and target maturity debt to insulate the built retirement nest egg from untimely market crashes.",
-                allocation: "45% Equity • 45% Debt & Bonds • 10% Liquid",
-                recommended: "Systematic Transfer Plans (STP) • Debt Funds",
-                href: "/wealth-solutions/retirement-planning",
-              },
-              {
-                stage: "05",
-                phase: "RETIREMENT FREEDOM & MONTHLY CASHFLOW",
-                age: "Age 58+",
-                tagline: "Inflation-Proof Drawdowns • Capital Longevity",
-                description:
-                  "Implement Systematic Withdrawal Plans (SWP) in hybrid and debt schemes to generate predictable monthly cashflows that incur lower effective tax than traditional fixed deposits.",
-                allocation: "30% Large-Cap Equity (Inflation Hedge) • 60% Debt • 10% Liquid Cash",
-                recommended: "Systematic Withdrawal Plan (SWP) • Corporate Bonds",
-                href: "/wealth-solutions/retirement-planning",
-              },
-              {
-                stage: "06",
-                phase: "GENERATIONAL LEGACY & WEALTH TRANSFER",
-                age: "Multi-Decade",
-                tagline: "Family Estate Continuity • Nomination Governance",
-                description:
-                  "Ensure seamless transition of family wealth through comprehensive mutual fund nomination audits, joint holding structures, and clear wealth transmission architecture.",
-                allocation: "Preserved Portfolio Core • Institutional Mandates",
-                recommended: "Portfolio Health Audit • HNI Custody Mandates",
-                href: "/wealth-solutions/portfolio-review",
-              },
-            ].map((item) => (
+            {LIFE_STAGES.map((item) => (
               <div
                 key={item.stage}
-                className="p-6 rounded-xl bg-[var(--color-surface-low)] border border-[var(--color-border-subtle)] hover:border-[var(--color-primary)] transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-6"
+                className="border border-[var(--color-border-subtle)] rounded-[4px] p-4 bg-[var(--color-surface-low)] flex flex-col lg:flex-row lg:items-center justify-between gap-4"
               >
                 <div className="lg:max-w-xl">
-                  <div className="flex flex-wrap items-center gap-2.5 mb-2">
-                    <span className="font-mono text-xs font-bold text-[var(--color-secondary)] bg-[var(--color-emerald-subtle)] px-2.5 py-0.5 rounded border border-[var(--color-border-strong)]">
-                      STAGE {item.stage}
-                    </span>
-                    <span className="text-xs font-bold text-[var(--color-text-muted)] font-mono">{item.age}</span>
-                    <span className="text-[11px] font-semibold text-[var(--color-secondary)] hidden sm:inline">• {item.tagline}</span>
+                  <div className="flex items-center gap-2 text-xs font-mono mb-1">
+                    <span className="font-bold text-[var(--color-secondary)]">{item.stage}</span>
+                    <span className="text-[var(--color-text-muted)]">• {item.age}</span>
+                    <span className="text-[11px] text-[var(--color-primary)] font-semibold hidden sm:inline">• {item.tagline}</span>
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold text-[var(--color-text-primary)] mb-1" style={{ fontFamily: "var(--font-heading)" }}>
+                  <h3 className="text-sm font-bold text-[var(--color-text-primary)] mb-1">
                     {item.phase}
                   </h3>
-                  <p className="text-xs text-[var(--color-text-muted)] leading-relaxed mb-3">
+                  <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mb-2">
                     {item.description}
                   </p>
-                  <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--color-text-secondary)]">
-                    <span className="font-medium"><strong>Asset Mix:</strong> {item.allocation}</span>
+                  <div className="text-[11px] font-mono text-[var(--color-primary)] font-medium">
+                    Asset Mix: {item.allocation}
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-between gap-3 shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-[var(--color-border-subtle)]">
-                  <span className="text-[11px] text-[var(--color-text-muted)] font-medium">
-                    {item.recommended}
-                  </span>
+                <div className="shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-[var(--color-border-subtle)]">
                   <Link
                     href={item.href}
-                    className="py-2.5 px-4 rounded-xl bg-white border border-[var(--color-border-subtle)] hover:border-[var(--color-primary)] text-xs font-bold text-[var(--color-primary)] hover:text-[var(--color-secondary)] inline-flex items-center gap-2 transition-colors shadow-xs"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 bg-white border border-[var(--color-border-subtle)] rounded-[4px] text-[var(--color-text-primary)] hover:border-[var(--color-primary)] transition-colors"
                   >
-                    <span>Explore Strategy</span>
-                    <ArrowRight size={13} />
+                    <span>View Strategy</span>
+                    <ArrowRight size={12} />
                   </Link>
                 </div>
               </div>
@@ -199,36 +239,39 @@ export default function WealthSolutionsHubPage() {
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-[var(--color-primary)] text-white rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl mb-12">
-          <div className="max-w-xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-secondary-fixed)] block mb-1">
-              Complimentary Audit
-            </span>
-            <h3 className="text-2xl font-bold text-white tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-              Request a Free Portfolio Review
+        {/* Action Panel */}
+        <div className="bg-[var(--color-surface-container-highest)] border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
+          <div>
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Milestone Consultation</span>
+            <h3 className="text-lg font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
+              Align Your Capital to Your Life Milestones
             </h3>
-            <p className="text-xs text-white/70 mt-2 leading-relaxed">
-              Upload or share your Consolidated Account Statement (CAS) for an unbiased diagnostic analysis
-              conducted directly by Panchanan Kumar (ARN-195797).
+            <p className="text-xs text-[var(--color-text-secondary)] mt-1 max-w-xl">
+              Connect with Panchanan Kumar (ARN-195797) to structure your personalized milestone roadmap.
             </p>
           </div>
-          <Link
-            href="/wealth-solutions/portfolio-review"
-            className="px-7 py-3.5 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-700)] text-white text-xs font-bold rounded-xl text-center shrink-0 shadow-md transition-colors inline-flex items-center gap-2"
-          >
-            <span>Start Portfolio Review</span>
-            <ArrowRight size={14} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link
+              href="/wealth-solutions/portfolio-review"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white border border-[var(--color-border-subtle)] text-xs font-semibold text-[var(--color-text-primary)] rounded-[4px] hover:border-[var(--color-primary)] transition-colors"
+            >
+              <span>Request Folio Review</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-xs font-semibold text-white rounded-[4px] hover:bg-[var(--color-primary-800)] transition-colors"
+            >
+              <span>Schedule Milestone Review</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
 
-        {/* Compliance Footer */}
-        <div className="p-4 rounded-xl bg-white border border-[var(--color-border-subtle)] flex items-start gap-3 text-xs text-[var(--color-text-muted)]">
-          <ShieldCheck size={18} className="text-[var(--color-text-muted)] shrink-0 mt-0.5" />
+        {/* Regulatory Disclosure */}
+        <div className="p-4 bg-white border border-[var(--color-border-subtle)] rounded-[4px] flex items-start gap-3 text-xs text-[var(--color-text-muted)]">
+          <ShieldCheck size={16} className="shrink-0 mt-0.5 text-[var(--color-secondary)]" />
           <p className="leading-relaxed">
-            <strong>Statutory Disclosure:</strong> Mutual fund investments are subject to market risks.
-            Read all scheme related documents carefully before investing. FINREV SOLUTIONS is an AMFI-registered
-            Mutual Fund Distributor (ARN-195797).
+            <strong>Statutory Disclosure:</strong> Mutual fund investments are subject to market risks. Read all scheme related documents carefully before investing. Milestone planning frameworks are illustrative and do not guarantee future returns. FINREV SOLUTIONS is an AMFI-registered Mutual Fund Distributor (ARN-195797).
           </p>
         </div>
       </Container>

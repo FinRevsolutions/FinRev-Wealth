@@ -67,25 +67,25 @@ export function GrowthChartSVG({
   );
 
   return (
-    <div className="bg-white rounded-2xl border border-[var(--color-border-subtle)] p-6 md:p-8 shadow-[var(--shadow-card)] mb-10">
-      <div className="flex items-center justify-between mb-6 pb-3 border-b border-[var(--color-border-subtle)]">
+    <div className="bg-white rounded-[6px] border border-[var(--color-border-subtle)] p-6 md:p-8 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-3 border-b border-[var(--color-border-subtle)]">
         <div>
-          <h3 className="text-base font-bold text-[var(--color-text-primary)]">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-primary)]">
             {title}
           </h3>
           <p className="text-xs text-[var(--color-text-muted)] mt-0.5">
             {subtitle}
           </p>
         </div>
-        <div className="flex items-center gap-4 text-xs font-semibold">
+        <div className="flex items-center gap-4 text-xs font-medium">
           <div className="flex items-center gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-[var(--color-secondary)]" />
+            <span className="w-2.5 h-2.5 rounded-[2px] bg-[var(--color-secondary)]" />
             <span className="text-[var(--color-text-secondary)]">Total Value</span>
           </div>
           {hasInvested && (
             <div className="flex items-center gap-1.5">
-              <div className="w-3 h-3 rounded-full bg-[var(--color-primary)]" />
-              <span className="text-[var(--color-text-secondary)]">Capital Invested</span>
+              <span className="w-2.5 h-2.5 rounded-[2px] bg-[var(--color-primary)]" />
+              <span className="text-[var(--color-text-secondary)]">Contributed Capital</span>
             </div>
           )}
         </div>
@@ -99,7 +99,7 @@ export function GrowthChartSVG({
         >
           <defs>
             <linearGradient id="growthAreaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#006C4A" stopOpacity="0.25" />
+              <stop offset="0%" stopColor="#006C4A" stopOpacity="0.20" />
               <stop offset="100%" stopColor="#006C4A" stopOpacity="0.0" />
             </linearGradient>
           </defs>
@@ -113,7 +113,7 @@ export function GrowthChartSVG({
                 x2={width - padding.right}
                 y2={t.y}
                 stroke="#E5E7EB"
-                strokeDasharray="4 4"
+                strokeDasharray="3 3"
                 strokeWidth="1"
               />
               <text
@@ -139,7 +139,7 @@ export function GrowthChartSVG({
               fill="none"
               stroke="#0A192F"
               strokeWidth="2"
-              strokeDasharray="3 3"
+              strokeDasharray="4 3"
             />
           )}
 
@@ -148,7 +148,7 @@ export function GrowthChartSVG({
             d={valueLinePath}
             fill="none"
             stroke="#006C4A"
-            strokeWidth="3"
+            strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -159,10 +159,10 @@ export function GrowthChartSVG({
               <circle
                 cx={getX(d.year)}
                 cy={getY(d.value)}
-                r="4"
+                r="3.5"
                 fill="#FFFFFF"
                 stroke="#006C4A"
-                strokeWidth="2.5"
+                strokeWidth="2"
               />
               <text
                 x={getX(d.year)}
@@ -224,7 +224,7 @@ export function DonutChartSVG({
 
   return (
     <div className="flex flex-col items-center justify-center p-4">
-      <div className="relative w-44 h-44 flex items-center justify-center">
+      <div className="relative w-40 h-40 flex items-center justify-center">
         <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full -rotate-90">
           {slicesWithOffset.map((slice, idx) => (
             <circle
@@ -243,7 +243,7 @@ export function DonutChartSVG({
         </svg>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-          <span className="text-[10px] uppercase font-bold text-[var(--color-text-muted)] tracking-wider">
+          <span className="text-[10px] uppercase font-mono font-bold text-[var(--color-text-muted)] tracking-wider">
             {centerLabel}
           </span>
           <span
@@ -260,7 +260,7 @@ export function DonutChartSVG({
         {slices.map((slice, idx) => (
           <div key={idx} className="flex items-center gap-2 text-xs">
             <span
-              className="w-2.5 h-2.5 rounded-full shrink-0"
+              className="w-2.5 h-2.5 rounded-[2px] shrink-0"
               style={{ backgroundColor: slice.color }}
             />
             <span className="text-[var(--color-text-secondary)] font-medium truncate">

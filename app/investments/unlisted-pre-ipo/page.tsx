@@ -1,239 +1,241 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Sparkles, ShieldAlert, CheckCircle2, AlertTriangle, HelpCircle, FileSearch, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldAlert, CheckCircle2, AlertTriangle, HelpCircle, FileSearch, ShieldCheck, Scale, Clock, Lock } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { createPageMetadata } from "@/lib/metadata";
+import { REGULATORY } from "@/lib/constants";
 
 export const metadata: Metadata = createPageMetadata(
-  "Unlisted Shares & Pre-IPO Investments — Private Market Equity",
-  "Access unlisted equity and pre-IPO allocations in mature late-stage private companies. High-risk, long-horizon opportunities through FINREV SOLUTIONS.",
+  "Unlisted Shares & Pre-IPO Equities — Risk Governance & Diligence",
+  "Institutional analysis of unlisted shares and pre-IPO equity. Detailed evaluation of liquidity risk, valuation uncertainty, price discovery, and SEBI post-listing lock-in rules.",
   "/investments/unlisted-pre-ipo"
 );
 
-const PRE_IPO_CONSIDERATIONS = [
+const RISK_PILLARS = [
   {
-    title: "Pre-Listing Valuation Entry",
-    summary:
-      "Opportunity to acquire equity stakes in high-growth companies before they launch public Initial Public Offerings (IPOs) on NSE/BSE.",
+    title: "01. Extreme Liquidity Risk",
+    subtitle: "No Regulated Public Order Book",
+    description:
+      "Unlisted shares do not trade on continuous secondary exchange order books (BSE/NSE). Liquidating positions requires finding a bilateral counterparty through specialized intermediaries, which may take weeks, months, or prove impossible during market downturns.",
+    consequence: "Capital must be treated as completely illiquid with a multi-year horizon.",
   },
   {
-    title: "Direct Demat Transfer",
-    summary:
-      "Unlisted shares are credited directly into your NSDL or CDSL demat account via off-market Corporate Action (DIS/electronic transfer).",
+    title: "02. Valuation Uncertainty",
+    subtitle: "Absence of Continuous Mark-to-Market",
+    description:
+      "Unlike listed equities with real-time price discovery, unlisted company valuations rely on sporadic private funding rounds, internal DCF models, or unverified secondary broker quotations. Pricing is subjective and volatile.",
+    consequence: "Past private round valuations do not guarantee public market IPO pricing.",
   },
   {
-    title: "Mandatory Post-IPO Lock-in",
-    summary:
-      "Per current SEBI guidelines, all pre-IPO equity shares held by non-promoters are subject to a mandatory 6-month lock-in post listing date.",
+    title: "03. Limited Price Discovery & Spreads",
+    subtitle: "Bilateral Broker Markups & Opaque Spreads",
+    description:
+      "Off-market unlisted transactions feature wide bid-ask spreads and distributor markups. Buyers often pay substantial premiums above fair intrinsic enterprise value without access to complete institutional diligence materials.",
+    consequence: "Requires independent analysis of MCA statutory filings and audited balance sheets.",
   },
   {
-    title: "In-Depth Financial Scrutiny",
-    summary:
-      "Requires examination of MCA filings, audited balance sheets, cap tables, founder governance, and path-to-profitability metrics.",
+    title: "04. Exit Uncertainty & Regulatory Lock-In",
+    subtitle: "IPO Is Discretionary + Mandatory 6-Month Lock-In",
+    description:
+      "An unlisted enterprise has no legal obligation to conduct an Initial Public Offering (IPO). Filings can be rejected, delayed, or withdrawn by promoters. Furthermore, SEBI mandates a compulsory 6-month lock-in post-listing for pre-IPO shareholders.",
+    consequence: "You cannot sell shares during initial IPO listing momentum.",
   },
 ];
 
 const FAQS = [
   {
-    q: "How are unlisted shares held and traded?",
-    a: "Unlisted shares are held in dematerialized form in your personal demat account (NSDL/CDSL). They are transferred through off-market depository mechanisms. They do not trade on live stock exchange order books.",
+    q: "How are unlisted shares held and legally transferred?",
+    a: "Unlisted shares are held in dematerialized form in your personal NSDL or CDSL demat account. Transfers are executed via off-market Delivery Instruction Slips (DIS) or depository electronic mechanisms. They do not trade on the floor of a recognized stock exchange.",
   },
   {
-    q: "What is the SEBI lock-in period after a company goes public?",
-    a: "SEBI mandates a 6-month lock-in period from the date of IPO allotment for pre-listing shareholders. During this 6-month window, you cannot sell the shares on the open market.",
+    q: "What is the SEBI mandatory lock-in period after listing?",
+    a: "Under SEBI (Issue of Capital and Disclosure Requirements) Regulations, pre-issue equity capital held by non-promoters is subject to a statutory lock-in of 6 months from the date of IPO allotment. During this period, pre-IPO shares cannot be sold on stock exchanges.",
   },
   {
-    q: "How are capital gains taxed on unlisted shares in India?",
-    a: "Unlisted equity shares held for more than 24 months qualify for Long-Term Capital Gains (LTCG) tax at 12.5% without indexation (Budget 2024 revised rules). If held for 24 months or less, gains are treated as Short-Term Capital Gains (STCG) and taxed at your applicable slab rate.",
+    q: "How is taxation calculated for unlisted equity in India?",
+    a: "Under current Indian tax provisions (Finance Act 2024), unlisted equity shares held for more than 24 months are classified as Long-Term Capital Assets and taxed at 12.5% without indexation. If held for 24 months or less, gains are treated as Short-Term Capital Gains (STCG) and taxed at applicable income tax slab rates.",
   },
   {
-    q: "Does FINREV guarantee that an unlisted company will launch an IPO?",
-    a: "Absolutely not. IPO timelines are subject to board decisions, regulatory approvals, market liquidity, and broader economic conditions. Many unlisted companies may postpone, alter, or cancel IPO plans.",
+    q: "Does FINREV SOLUTIONS guarantee that an unlisted company will launch an IPO?",
+    a: "No. FINREV SOLUTIONS does not guarantee, predict, or assure Initial Public Offerings (IPOs), listing valuations, or liquidity timelines. IPO decisions reside entirely with the issuer's board of directors, merchant bankers, and regulatory authorities.",
   },
 ];
 
 export default function UnlistedPreIPOPage() {
   return (
-    <div className="py-12 md:py-20 bg-[var(--color-surface-canvas)] min-h-screen">
+    <div className="py-10 md:py-16 bg-[var(--color-surface-canvas)] min-h-screen">
       <Container>
-        {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-[var(--color-text-muted)] mb-8">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-[var(--color-text-muted)] mb-6">
           <Link href="/" className="hover:text-[var(--color-text-primary)] transition-colors">Home</Link>
           <span>/</span>
           <Link href="/investments" className="hover:text-[var(--color-text-primary)] transition-colors">Investments</Link>
           <span>/</span>
-          <span className="text-[var(--color-text-primary)]">Unlisted & Pre-IPO</span>
+          <span className="text-[var(--color-text-primary)]">Unlisted Shares & Pre-IPO</span>
         </nav>
 
-        {/* Hero */}
-        <div className="max-w-4xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--color-gold-subtle)] text-[var(--color-tertiary)] text-xs font-bold rounded border border-[#fde68a] mb-3">
-            <Sparkles size={14} />
-            <span>Private Equity Allocations • High Risk / Long Horizon</span>
+        {/* Hero Section */}
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-amber-900 mb-2">
+            <ShieldAlert size={13} className="text-amber-700" />
+            <span>High Risk • Illiquid Capital Allocation</span>
+            <span>•</span>
+            <span className="font-mono text-[var(--color-text-muted)]">ARN-195797</span>
           </div>
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight mt-1"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Unlisted Equities & Pre-IPO Opportunities
+            Unlisted Equities & Pre-IPO Allocations
           </h1>
-          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-3xl">
-            Access private market equity in late-stage, mature enterprises prior to public stock exchange listing.
-            Requires thorough financial diligence, capital patience, and high risk tolerance.
+          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mt-3 leading-relaxed">
+            Direct private equity participation in late-stage unlisted enterprises requires sober risk governance.
+            Investors must evaluate illiquidity constraints, opaque price discovery, and mandatory regulatory holding lock-ins.
           </p>
         </div>
 
-        {/* Key Realities Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {PRE_IPO_CONSIDERATIONS.map((item) => (
-            <div key={item.title} className="bg-white p-7 rounded-2xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] flex flex-col justify-between">
-              <div>
-                <div className="w-10 h-10 rounded-xl bg-[var(--color-tertiary)] text-white flex items-center justify-center mb-4">
-                  <FileSearch size={18} />
-                </div>
-                <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
-                  {item.title}
-                </h3>
-                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                  {item.summary}
-                </p>
-              </div>
-            </div>
-          ))}
+        {/* Sobering Advisory Warning Box */}
+        <div className="bg-amber-50/70 border border-amber-300 rounded-[4px] p-5 mb-12 flex items-start gap-3 text-xs text-amber-950 leading-relaxed">
+          <AlertTriangle size={18} className="text-amber-800 shrink-0 mt-0.5" />
+          <div>
+            <strong className="block mb-1 text-sm font-bold text-amber-900">Institutional Diligence Warning:</strong>
+            Unlisted equities carry higher risk characteristics than listed securities. They are completely illiquid, lack continuous market pricing, and depend on uncertain future corporate events. Investors should only allocate patient, discretionary capital that they can afford to lock away for 5+ years or lose entirely in adverse business scenarios.
+          </div>
         </div>
 
-        {/* VISUAL 1: The 5-Step Pre-IPO Allocation Process */}
-        <div className="bg-white rounded-2xl p-7 md:p-8 border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] mb-16">
-          <div className="max-w-2xl mb-6">
-            <SectionLabel>Institutional Pipeline</SectionLabel>
-            <h3 className="text-xl font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
-              The Pre-IPO Off-Market Execution Framework
-            </h3>
-            <p className="text-xs text-[var(--color-text-muted)] mt-1">
-              Compliant depository transfer directly into your personal CDSL or NSDL demat account.
-            </p>
+        {/* 4 Critical Risk Dimensions: Structured Rows */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Risk Architecture</span>
+              <h2 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+                Four Structural Realities of Unlisted Equity
+              </h2>
+            </div>
+            <span className="text-xs text-[var(--color-text-muted)] font-mono">SEBI ICDR Regulations</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {[
-              {
-                step: "01",
-                title: "Financial Screening",
-                desc: "Review audited balance sheets, MCA filings, EBITDA margins, and DRHP draft prospectus timeline.",
-              },
-              {
-                step: "02",
-                title: "Price & Lot Confirmation",
-                desc: "Bilateral price negotiation and allocation commitment based on prevailing unlisted market inventory.",
-              },
-              {
-                step: "03",
-                title: "Demat Transfer (DIS)",
-                desc: "Off-market delivery instruction slip (DIS) execution with direct credit to your client Demat ID.",
-              },
-              {
-                step: "04",
-                title: "Pre-Listing Horizon",
-                desc: "Holding tenure while company completes SEBI DRHP filing, anchor book bidding, and IPO launch.",
-              },
-              {
-                step: "05",
-                title: "SEBI 6-Mo Lock-In",
-                desc: "Statutory 6-month holding requirement post listing, after which shares transition to open-market liquidity.",
-              },
-            ].map((st) => (
-              <div key={st.step} className="p-4 rounded-xl bg-[var(--color-surface-low)] border border-[var(--color-border-subtle)] flex flex-col justify-between">
-                <div>
-                  <span className="font-mono text-[10px] font-bold text-[var(--color-tertiary)] bg-[var(--color-gold-subtle)] px-2 py-0.5 rounded border border-[#fde68a] inline-block mb-2.5">
-                    STEP {st.step}
-                  </span>
-                  <h4 className="text-sm font-bold text-[var(--color-text-primary)] mb-1 leading-snug">{st.title}</h4>
-                  <p className="text-[11px] text-[var(--color-text-muted)] leading-relaxed">
-                    {st.desc}
-                  </p>
+          <div className="space-y-6 divide-y divide-[var(--color-border-subtle)]">
+            {RISK_PILLARS.map((item, idx) => (
+              <div key={item.title} className={idx > 0 ? "pt-6" : ""}>
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                  <div className="md:w-1/3">
+                    <span className="font-mono text-xs font-bold text-[var(--color-secondary)] uppercase tracking-wider block mb-1">
+                      {item.subtitle}
+                    </span>
+                    <h3 className="text-base font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+                      {item.title}
+                    </h3>
+                  </div>
+                  <div className="md:w-2/3 space-y-2 text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                    <p>{item.description}</p>
+                    <div className="p-2.5 bg-amber-50/50 border border-amber-200 rounded-[2px] text-[11px] text-amber-950 font-medium">
+                      <strong>Prudential Impact:</strong> {item.consequence}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Essential Truths: High Risk and Valuation Uncertainty */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          <div className="bg-white p-7 rounded-2xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)]">
-            <h4 className="text-sm font-bold text-[var(--color-text-primary)] flex items-center gap-2 mb-4">
-              <CheckCircle2 size={16} className="text-[var(--color-secondary)]" />
-              Who May Consider Unlisted Equities
-            </h4>
-            <ul className="flex flex-col gap-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
-              <li>• Sophisticated HNIs with substantial existing liquid portfolios in public mutual funds.</li>
-              <li>• Investors seeking non-linear valuation expansion over 3 to 5-year patient holding horizons.</li>
-              <li>• Investors comfortable evaluating financial statements, revenue models, and governance.</li>
-              <li>• Allocators who can afford complete capital illiquidity during market downturns.</li>
-            </ul>
+        {/* COMPARISON TABLE: Listed vs Unlisted Equity */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6">
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Market Governance</span>
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
+              Comparative Analysis: Listed Equities vs. Unlisted Equities
+            </h2>
           </div>
 
-          <div className="bg-white p-7 rounded-2xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)]">
-            <h4 className="text-sm font-bold text-[var(--color-text-primary)] flex items-center gap-2 mb-4">
-              <AlertTriangle size={16} className="text-[var(--color-tertiary)]" />
-              Rigorous Risk Disclosures
-            </h4>
-            <ul className="flex flex-col gap-2.5 text-xs text-[var(--color-text-muted)] leading-relaxed">
-              <li>• <strong>Illiquidity:</strong> You cannot sell unlisted shares on a public exchange on demand.</li>
-              <li>• <strong>IPO Cancellation Risk:</strong> Filing an IPO is never guaranteed and timelines often stretch.</li>
-              <li>• <strong>Valuation Opacity:</strong> Prices are negotiated bilaterally rather than discovered on an exchange.</li>
-              <li>• <strong>Post-Listing Lock-in:</strong> SEBI imposes a mandatory 6-month lock-in post listing for pre-IPO investors.</li>
-            </ul>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs">
+              <thead>
+                <tr className="border-b border-[var(--color-border-subtle)] text-[var(--color-text-muted)] uppercase tracking-wider font-semibold">
+                  <th className="py-3 px-3 w-1/4">Evaluation Factor</th>
+                  <th className="py-3 px-3 w-3/8">Public Listed Equities (NSE/BSE)</th>
+                  <th className="py-3 px-3 w-3/8">Unlisted / Pre-IPO Equities</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[var(--color-border-subtle)] font-medium text-[var(--color-text-secondary)]">
+                <tr>
+                  <td className="py-3 px-3 font-semibold text-[var(--color-text-primary)]">Secondary Market Liquidity</td>
+                  <td className="py-3 px-3 text-emerald-900">Instantaneous electronic trade settlement (T+1)</td>
+                  <td className="py-3 px-3 text-rose-900 font-semibold">Severe illiquidity; bilateral off-market transfers only</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-3 font-semibold text-[var(--color-text-primary)]">Price Transparency</td>
+                  <td className="py-3 px-3">Live continuous order matching on exchanges</td>
+                  <td className="py-3 px-3 font-semibold text-[var(--color-primary)]">Opaque; negotiated quotes via brokers/dealers</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-3 font-semibold text-[var(--color-text-primary)]">Mandatory Disclosures</td>
+                  <td className="py-3 px-3">Quarterly audited results, LODR governance filings</td>
+                  <td className="py-3 px-3">Annual MCA filings; limited interim disclosures</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-3 font-semibold text-[var(--color-text-primary)]">Post-IPO Regulatory Lock-in</td>
+                  <td className="py-3 px-3">Zero lock-in for regular public retail shares</td>
+                  <td className="py-3 px-3 font-semibold text-amber-900">Mandatory 6-month non-promoter lock-in post listing</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-3 font-semibold text-[var(--color-text-primary)]">Capital Loss Risk Profile</td>
+                  <td className="py-3 px-3">Market cyclical volatility</td>
+                  <td className="py-3 px-3 text-rose-900 font-semibold">High risk of prolonged or total capital lock-up</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
         {/* FAQs */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-6" style={{ fontFamily: "var(--font-heading)" }}>
-            Frequently Asked Questions
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6">
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+              Frequently Asked Questions on Unlisted Equities
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {FAQS.map((faq) => (
-              <div key={faq.q} className="p-5 bg-white rounded-xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)]">
-                <div className="flex items-start gap-2 mb-2">
-                  <HelpCircle size={16} className="text-[var(--color-primary)] shrink-0 mt-0.5" />
-                  <h4 className="text-sm font-bold text-[var(--color-text-primary)] leading-snug">{faq.q}</h4>
+              <div key={faq.q} className="border-b border-[var(--color-border-subtle)] pb-4">
+                <div className="flex items-start gap-2 mb-1.5">
+                  <HelpCircle size={14} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
+                  <h3 className="text-xs font-bold text-[var(--color-text-primary)] leading-snug">{faq.q}</h3>
                 </div>
-                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed pl-6">{faq.a}</p>
+                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed pl-5">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-[var(--color-primary)] text-white rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl mb-12">
-          <div className="max-w-xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-secondary-fixed)] block mb-1">
-              Private Equity Inquiries
-            </span>
-            <h3 className="text-2xl font-bold text-white tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-              Discuss Verified Private Market Companies
+        {/* Action Panel */}
+        <div className="bg-[var(--color-surface-container-highest)] border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
+          <div>
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Diligence Consultation</span>
+            <h3 className="text-lg font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
+              Inquire on Financial Scrutiny & Off-Market Transfers
             </h3>
-            <p className="text-xs text-white/70 mt-2 leading-relaxed">
-              Connect directly with Panchanan Kumar for audited data packs and demat execution processes.
+            <p className="text-xs text-[var(--color-text-secondary)] mt-1 max-w-xl">
+              Conduct objective balance sheet reviews and cap-table diligence with Panchanan Kumar (ARN-195797).
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="px-7 py-3.5 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-700)] text-white text-xs font-bold rounded-xl text-center shrink-0 shadow-md transition-colors inline-flex items-center gap-2"
-          >
-            <span>Inquire on Unlisted Shares</span>
-            <ArrowRight size={14} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-xs font-semibold text-white rounded-[4px] hover:bg-[var(--color-primary-800)] transition-colors"
+            >
+              <span>Consult on Unlisted Allocations</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
 
-        {/* Compliance Footer */}
-        <div className="p-4 rounded-xl bg-white border border-[var(--color-border-subtle)] flex items-start gap-3 text-xs text-[var(--color-text-muted)]">
-          <ShieldCheck size={18} className="text-[var(--color-text-muted)] shrink-0 mt-0.5" />
+        {/* Regulatory Disclosure */}
+        <div className="p-4 bg-white border border-[var(--color-border-subtle)] rounded-[4px] flex items-start gap-3 text-xs text-[var(--color-text-muted)]">
+          <ShieldCheck size={16} className="shrink-0 mt-0.5 text-[var(--color-secondary)]" />
           <p className="leading-relaxed">
-            <strong>Statutory Disclosure:</strong> Investments in unlisted equity securities are illiquid and carry substantial risk.
-            There is no guarantee of listing on any stock exchange or assurance of returns. Consult your professional legal and tax
-            counsel before acquiring private equity shares.
+            <strong>Statutory Disclosure:</strong> Unlisted equity shares are not traded on recognized stock exchanges and are subject to high liquidity risk, valuation opacity, and uncertain exit horizons. There is no assurance of public listing or capital appreciation. FINREV SOLUTIONS does not guarantee IPO timelines or investment returns. Facilitated strictly on an execution and referral basis.
           </p>
         </div>
       </Container>

@@ -1,55 +1,104 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Compass, ShieldCheck, CheckCircle2, Calculator, Target, HelpCircle } from "lucide-react";
+import { ArrowRight, Compass, ShieldCheck, CheckCircle2, Calculator, Target, HelpCircle, TrendingUp, Layers, Check, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { createPageMetadata } from "@/lib/metadata";
+import { REGULATORY } from "@/lib/constants";
 
 export const metadata: Metadata = createPageMetadata(
   "Goal-Based Investing — Aligning Portfolios to Life Milestones",
-  "Structure mutual fund investments around exact life priorities: Home Down-Payment, Sabbaticals, and Family Milestones with FINREV SOLUTIONS.",
+  "Structure mutual fund investments around exact life priorities: Home Down-Payment, Sabbaticals, and Family Milestones with FINREV SOLUTIONS (ARN-195797).",
   "/wealth-solutions/goal-based-investing"
 );
 
-const GOAL_EXAMPLES = [
+const GOAL_PORTFOLIOS = [
   {
-    goal: "Home Down-Payment Fund",
-    horizon: "3 to 5 Years",
-    strategy: "Balanced Advantage & Conservative Hybrid funds to preserve principal while generating modest equity alpha.",
+    goal: "Home Down-Payment Corpus",
+    horizon: "4 Years Horizon",
+    currentPos: "₹5,00,000 Saved",
+    targetGoal: "₹30,00,000 Target",
+    contribution: "₹41,500 / month SIP",
+    progress: 17,
+    strategy: "Dynamic Asset Allocation (Balanced Advantage) + Corporate Bond Funds. Transition to 100% Liquid fund 9 months before registration.",
   },
   {
-    goal: "Emergency Liquidity Shield",
-    horizon: "Immediate (0 to 1 Year)",
-    strategy: "High-grade Liquid & Overnight Funds maintaining 6 to 12 months of household expenses with T+1 redemption.",
+    goal: "Child Higher Education Fund",
+    horizon: "12 Years Horizon",
+    currentPos: "₹3,50,000 Saved",
+    targetGoal: "₹50,00,000 Target",
+    contribution: "₹16,200 / month SIP",
+    progress: 7,
+    strategy: "75% Multi-Cap Equity + 25% High Grade Debt. Automated annual Step-Up SIP (+10%) to counter 10%+ educational inflation.",
   },
   {
-    goal: "Sabbatical / Career Pivot",
-    horizon: "5 to 7 Years",
-    strategy: "Multi-Asset Allocation balancing large cap equity with gold hedging to secure replacement cash flows.",
+    goal: "Sabbatical / Professional Transition",
+    horizon: "5 Years Horizon",
+    currentPos: "₹8,00,000 Saved",
+    targetGoal: "₹25,00,000 Target",
+    contribution: "₹19,800 / month SIP",
+    progress: 32,
+    strategy: "Multi-Asset Allocation (Equity + Fixed Income + Gold Hedge) to provide buffer against sudden market drawdowns before career pause.",
   },
   {
-    goal: "Generational Legacy Corpus",
-    horizon: "15+ Years",
-    strategy: "Pure high-conviction Flexi Cap and Mid Cap equity allocations for uncompromised multi-decade compounding.",
+    goal: "Long-Term Financial Independence",
+    horizon: "20 Years Horizon",
+    currentPos: "₹15,00,000 Saved",
+    targetGoal: "₹2,50,00,000 Target",
+    contribution: "₹28,500 / month SIP",
+    progress: 6,
+    strategy: "Aggressive Equity Allocation (Large + Mid + Flexi Cap). Focus on continuous compounding across multiple market cycles.",
+  },
+];
+
+const GLIDE_PATH_STAGES = [
+  {
+    stage: "Stage 01: Capital Acceleration",
+    timeRemaining: "10+ Years to Goal",
+    allocation: "80% Equity / 20% Debt",
+    focus: "Maximize compounding potential. Interim bear markets are actively beneficial via monthly SIP rupee-cost averaging.",
+  },
+  {
+    stage: "Stage 02: Milestone Consolidation",
+    timeRemaining: "4 to 7 Years to Goal",
+    allocation: "60% Equity / 40% Debt",
+    focus: "Introduce Balanced Advantage and high-quality short duration debt to stabilize the accumulated corpus value.",
+  },
+  {
+    stage: "Stage 03: Systematic De-Risking",
+    timeRemaining: "2 to 3 Years to Goal",
+    allocation: "30% Equity / 70% Debt",
+    focus: "Initiate Systematic Transfer Plans (STP) from equity schemes to liquid debt funds to lock in accumulated profits.",
+  },
+  {
+    stage: "Stage 04: Capital Preservation",
+    timeRemaining: "Final 12 Months",
+    allocation: "100% Liquid / Overnight Debt",
+    focus: "Zero equity market exposure. Required milestone funds are insulated in capital-protecting cash equivalents ready for deployment.",
   },
 ];
 
 const FAQS = [
   {
-    q: "Why is goal-based investing superior to return-chasing?",
-    a: "When you invest for a specific goal, you have a defined exit date and target sum. This prevents emotional panic during market dips because you know you do not need the money today. It also ensures you automatically de-risk (shift from equity to debt) as the goal date approaches.",
+    q: "Why is goal-based investing superior to arbitrary return-chasing?",
+    a: "Investing without a target goal leaves your portfolio vulnerable to emotional market timing and sudden liquidation at market bottoms. When linked to an exact milestone date and figure, you establish a disciplined risk budget and an automated de-risking glide path that protects your capital as the deadline approaches.",
   },
   {
-    q: "What is a glide-path strategy in goal planning?",
-    a: "A glide path is an automated asset allocation shift over time. If your goal is 10 years away, the portfolio starts at 80% equity. By year 7, it tapers to 50%, and by year 9, it shifts into liquid debt funds, locking in gains and eliminating last-minute market crash risk.",
+    q: "How does the asset allocation glide-path function?",
+    a: "A glide-path automatically adjusts the equity-to-debt ratio as your time horizon shrinks. When your goal is a decade away, volatility is your ally and equity is maximized. In the final two years, equity gains are methodically shifted into low-risk liquid debt to shield the corpus from unexpected market corrections.",
+  },
+  {
+    q: "Can multiple life goals be managed under one ARN-195797 account?",
+    a: "Yes. In accordance with AMFI and RTA architecture, mutual fund folios can be segregated and mapped to distinct life goals (e.g. Folio A for Home, Folio B for Child Education) allowing independent tracking, distinct risk profiles, and bespoke asset allocations.",
   },
 ];
 
 export default function GoalBasedInvestingPage() {
   return (
-    <div className="py-12 md:py-20 bg-[var(--color-surface-canvas)] min-h-screen">
+    <div className="py-10 md:py-16 bg-[var(--color-surface-canvas)] min-h-screen">
       <Container>
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-[var(--color-text-muted)] mb-8">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-[var(--color-text-muted)] mb-6">
           <Link href="/" className="hover:text-[var(--color-text-primary)] transition-colors">Home</Link>
           <span>/</span>
           <Link href="/wealth-solutions" className="hover:text-[var(--color-text-primary)] transition-colors">Wealth Solutions</Link>
@@ -57,195 +106,174 @@ export default function GoalBasedInvestingPage() {
           <span className="text-[var(--color-text-primary)]">Goal-Based Investing</span>
         </nav>
 
-        <div className="max-w-4xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--color-emerald-subtle)] text-[var(--color-secondary)] text-xs font-bold rounded border border-[var(--color-border-strong)] mb-3">
-            <Compass size={14} />
-            <span>Milestone Architecture</span>
+        {/* Hero Section */}
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-primary)] mb-2">
+            <Compass size={13} className="text-[var(--color-secondary)]" />
+            <span>Milestone-Driven Asset Allocation</span>
+            <span className="text-[var(--color-secondary)]">•</span>
+            <span className="font-mono text-[var(--color-secondary)]">{REGULATORY.arnNumber}</span>
           </div>
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight mt-1"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Goal-Based Investment Architecture
           </h1>
-          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-3xl">
-            Stop making arbitrary, unmapped investments. We link every single rupee to a distinct life milestone,
-            time horizon, and tailored risk-budgeting glide-path.
+          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mt-3 leading-relaxed">
+            Eliminate arbitrary investment guesswork. We map every rupee of surplus capital to an exact life milestone,
+            time horizon, and automated risk-budgeting glide path.
           </p>
         </div>
 
-        {/* VISUAL 1: The Goal-Based Asset Glidepath */}
-        <div className="bg-white rounded-2xl p-7 md:p-8 border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] mb-16">
-          <div className="max-w-2xl mb-6">
-            <SectionLabel>Dynamic De-Risking</SectionLabel>
-            <h3 className="text-xl font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
-              The FINREV Asset Allocation Glide-Path
-            </h3>
-            <p className="text-xs text-[var(--color-text-muted)] mt-1">
-              As your milestone draws closer, your portfolio automatically shifts from high-growth equity into capital-preserving liquid debt.
-            </p>
+        {/* GOAL PLANNING VISUALIZATION: Current Position, Goal, Horizon, Contribution, Progress */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Goal Mapping Workbench</span>
+              <h2 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+                Four Representative Milestone Blueprints
+              </h2>
+            </div>
+            <span className="text-xs text-[var(--color-text-muted)] font-mono">Current Position → Horizon → Target</span>
           </div>
 
-          <div className="space-y-4">
-            {[
-              {
-                timeframe: "10+ Years from Milestone",
-                phase: "Capital Acceleration Phase",
-                equity: 85,
-                debt: 15,
-                focus: "Pure multi-cap equity compounding; temporary market corrections are leveraged via SIP averaging.",
-                badge: "High Growth",
-                badgeColor: "text-emerald-800 bg-emerald-50 border-emerald-200",
-              },
-              {
-                timeframe: "5 to 7 Years from Milestone",
-                phase: "Milestone Consolidation Phase",
-                equity: 65,
-                debt: 35,
-                focus: "Introduce balanced advantage and corporate bond funds to cushion accumulated gains.",
-                badge: "Balanced Growth",
-                badgeColor: "text-blue-800 bg-blue-50 border-blue-200",
-              },
-              {
-                timeframe: "2 to 3 Years from Milestone",
-                phase: "De-Risking & Capital Shield Phase",
-                equity: 30,
-                debt: 70,
-                focus: "Systematic Transfer Plans (STP) harvest equity profits into high-grade short-duration debt.",
-                badge: "Capital Defense",
-                badgeColor: "text-amber-800 bg-amber-50 border-amber-200",
-              },
-              {
-                timeframe: "Final 12 Months to Target",
-                phase: "Zero-Volatility Liquidity Phase",
-                equity: 5,
-                debt: 95,
-                focus: "100% capital insulated in liquid and overnight funds. Your required corpus is fully protected and ready for withdrawal.",
-                badge: "100% Preserved",
-                badgeColor: "text-purple-800 bg-purple-50 border-purple-200",
-              },
-            ].map((step) => (
-              <div key={step.timeframe} className="p-5 rounded-xl bg-[var(--color-surface-low)] border border-[var(--color-border-subtle)]">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
+          <div className="space-y-6">
+            {GOAL_PORTFOLIOS.map((item) => (
+              <div key={item.goal} className="border border-[var(--color-border-subtle)] rounded-[4px] p-5 bg-[var(--color-surface-low)]">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
                   <div>
-                    <span className="font-mono text-[10px] font-bold text-[var(--color-secondary)] uppercase tracking-wider block">
-                      {step.timeframe}
-                    </span>
-                    <h4 className="text-sm font-bold text-[var(--color-text-primary)]">{step.phase}</h4>
+                    <div className="flex items-center gap-2 text-xs font-mono text-[var(--color-secondary)] font-semibold mb-1">
+                      <Target size={14} />
+                      <span>{item.horizon}</span>
+                    </div>
+                    <h3 className="text-base font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+                      {item.goal}
+                    </h3>
                   </div>
-                  <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded border self-start sm:self-center ${step.badgeColor}`}>
-                    {step.badge}
-                  </span>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+                    <div className="bg-white p-2.5 rounded-[2px] border border-[var(--color-border-subtle)]">
+                      <span className="text-[10px] text-[var(--color-text-muted)] block">Current Position</span>
+                      <span className="font-mono font-semibold text-[var(--color-text-primary)]">{item.currentPos}</span>
+                    </div>
+                    <div className="bg-white p-2.5 rounded-[2px] border border-[var(--color-border-subtle)]">
+                      <span className="text-[10px] text-[var(--color-text-muted)] block">Target Goal</span>
+                      <span className="font-mono font-semibold text-[var(--color-primary)]">{item.targetGoal}</span>
+                    </div>
+                    <div className="bg-white p-2.5 rounded-[2px] border border-[var(--color-border-subtle)] col-span-2 sm:col-span-1">
+                      <span className="text-[10px] text-[var(--color-text-muted)] block">Required SIP</span>
+                      <span className="font-mono font-bold text-[var(--color-secondary)]">{item.contribution}</span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="w-full h-3 rounded-full overflow-hidden flex bg-slate-200 mb-2">
-                  <div className="bg-[var(--color-secondary)] h-full transition-all" style={{ width: `${step.equity}%` }} title={`Equity: ${step.equity}%`} />
-                  <div className="bg-[var(--color-primary)] h-full transition-all" style={{ width: `${step.debt}%` }} title={`Debt: ${step.debt}%`} />
-                </div>
-
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs text-[var(--color-text-muted)] gap-1">
-                  <p className="text-[11px] text-[var(--color-text-secondary)]">{step.focus}</p>
-                  <div className="flex items-center gap-3 shrink-0 font-mono text-[10px]">
-                    <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[var(--color-secondary)]" />Equity: {step.equity}%</span>
-                    <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[var(--color-primary)]" />Debt: {step.debt}%</span>
+                {/* Progress Bar */}
+                <div className="space-y-1.5 mb-3">
+                  <div className="flex justify-between text-[11px] font-mono text-[var(--color-text-muted)]">
+                    <span>Progress to Target: {item.progress}%</span>
+                    <span>Remaining Gap: {100 - item.progress}%</span>
+                  </div>
+                  <div className="w-full h-2 bg-slate-200 rounded-[2px] overflow-hidden">
+                    <div className="h-full bg-[var(--color-secondary)]" style={{ width: `${item.progress}%` }} />
                   </div>
                 </div>
+
+                <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed pt-2 border-t border-[var(--color-border-subtle)]">
+                  <strong className="text-[var(--color-text-primary)]">Asset Allocation Strategy:</strong> {item.strategy}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* 4 Goal Archetypes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {GOAL_EXAMPLES.map((item) => (
-            <div key={item.goal} className="bg-white p-7 rounded-2xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold text-[var(--color-secondary)] bg-[var(--color-emerald-subtle)] px-2.5 py-0.5 rounded border border-[var(--color-border-strong)]">
-                    {item.horizon}
-                  </span>
-                  <Target size={16} className="text-[var(--color-text-muted)]" />
-                </div>
-                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
-                  {item.goal}
-                </h3>
-                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                  {item.strategy}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Goal Planner Tool Callout */}
-        <div className="p-8 rounded-2xl bg-white border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] flex flex-col sm:flex-row items-center justify-between gap-6 mb-16">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-secondary)] block mb-1">
-              Reverse Engineer Your Target
-            </span>
-            <h4 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
-              Calculate the Monthly SIP Needed For Your Next Goal
-            </h4>
+        {/* THE GLIDE-PATH ARCHITECTURE */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6">
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Risk Budgeting</span>
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
+              The FINREV Milestone Glide-Path Strategy
+            </h2>
             <p className="text-xs text-[var(--color-text-muted)] mt-1">
-              Enter target corpus and years to receive an exact monthly SIP calculation.
+              Automated de-risking: Portfolios systematically transition from high-growth equity to capital preservation as the goal deadline approaches.
             </p>
           </div>
-          <Link
-            href="/tools/goal-planner"
-            className="px-6 py-3 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-700)] text-white text-xs font-bold rounded-xl shrink-0 transition-colors inline-flex items-center gap-2 shadow-sm"
-          >
-            <Calculator size={14} />
-            <span>Open Goal Planner</span>
-          </Link>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {GLIDE_PATH_STAGES.map((s) => (
+              <div key={s.stage} className="border border-[var(--color-border-subtle)] rounded-[4px] p-4 bg-[var(--color-surface-low)] flex flex-col justify-between">
+                <div>
+                  <span className="font-mono text-xs font-bold text-[var(--color-secondary)] block mb-1">
+                    {s.timeRemaining}
+                  </span>
+                  <h3 className="text-sm font-bold text-[var(--color-text-primary)] mb-2">
+                    {s.stage}
+                  </h3>
+                  <div className="font-mono text-xs font-semibold text-[var(--color-primary)] bg-white p-2 rounded-[2px] border border-[var(--color-border-subtle)] mb-3">
+                    {s.allocation}
+                  </div>
+                  <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                    {s.focus}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* FAQs */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-6" style={{ fontFamily: "var(--font-heading)" }}>
-            Frequently Asked Questions
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6">
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+              Frequently Asked Questions on Goal-Based Investing
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {FAQS.map((faq) => (
-              <div key={faq.q} className="p-5 bg-white rounded-xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)]">
-                <div className="flex items-start gap-2 mb-2">
-                  <HelpCircle size={16} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
-                  <h4 className="text-sm font-bold text-[var(--color-text-primary)] leading-snug">{faq.q}</h4>
+              <div key={faq.q} className="border-b border-[var(--color-border-subtle)] pb-4">
+                <div className="flex items-start gap-2 mb-1.5">
+                  <HelpCircle size={14} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
+                  <h3 className="text-xs font-bold text-[var(--color-text-primary)] leading-snug">{faq.q}</h3>
                 </div>
-                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed pl-6">{faq.a}</p>
+                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed pl-5">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-[var(--color-primary)] text-white rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl mb-12">
-          <div className="max-w-xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-secondary-fixed)] block mb-1">
-              Milestone Consultation
-            </span>
-            <h3 className="text-2xl font-bold text-white tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-              Structure Your Milestones With Panchanan Kumar
+        {/* Action Panel */}
+        <div className="bg-[var(--color-surface-container-highest)] border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
+          <div>
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Consultative Planning</span>
+            <h3 className="text-lg font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
+              Map Your Next Financial Milestone
             </h3>
-            <p className="text-xs text-white/70 mt-2 leading-relaxed">
-              Connect to map your family's upcoming financial priorities to appropriate fund categories.
+            <p className="text-xs text-[var(--color-text-secondary)] mt-1 max-w-xl">
+              Model required contributions and risk-calibrated glide paths with Panchanan Kumar (ARN-195797).
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="px-7 py-3.5 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-700)] text-white text-xs font-bold rounded-xl text-center shrink-0 shadow-md transition-colors inline-flex items-center gap-2"
-          >
-            <span>Consult on Goals</span>
-            <ArrowRight size={14} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link
+              href="/tools/goal-planner"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white border border-[var(--color-border-subtle)] text-xs font-semibold text-[var(--color-text-primary)] rounded-[4px] hover:border-[var(--color-primary)] transition-colors"
+            >
+              <Calculator size={14} />
+              <span>Launch Goal Planner</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-xs font-semibold text-white rounded-[4px] hover:bg-[var(--color-primary-800)] transition-colors"
+            >
+              <span>Schedule Milestone Review</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
 
-        {/* Compliance Footer */}
-        <div className="p-4 rounded-xl bg-white border border-[var(--color-border-subtle)] flex items-start gap-3 text-xs text-[var(--color-text-muted)]">
-          <ShieldCheck size={18} className="text-[var(--color-text-muted)] shrink-0 mt-0.5" />
+        {/* Regulatory Disclosure */}
+        <div className="p-4 bg-white border border-[var(--color-border-subtle)] rounded-[4px] flex items-start gap-3 text-xs text-[var(--color-text-muted)]">
+          <ShieldCheck size={16} className="shrink-0 mt-0.5 text-[var(--color-secondary)]" />
           <p className="leading-relaxed">
-            <strong>Statutory Disclosure:</strong> Mutual fund investments are subject to market risks.
-            Read all scheme related documents carefully before investing. FINREV SOLUTIONS is an AMFI-registered
-            Mutual Fund Distributor (ARN-195797).
+            <strong>Statutory Disclosure:</strong> Mutual fund investments are subject to market risks. Read all scheme related documents carefully before investing. Goal planning simulations are illustrative and do not guarantee the achievement of specific financial targets. FINREV SOLUTIONS is an AMFI-registered Mutual Fund Distributor (ARN-195797).
           </p>
         </div>
       </Container>

@@ -11,19 +11,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-[var(--color-primary)] text-white hover:bg-[var(--color-secondary)] transition-all shadow-sm active:scale-[0.99]",
+    "bg-[var(--color-primary)] text-white hover:bg-[var(--color-secondary)] border border-[var(--color-primary-600)] hover:border-[var(--color-secondary)] shadow-xs transition-colors",
   secondary:
-    "border border-[var(--color-border-strong)] bg-white text-[var(--color-primary)] hover:bg-[var(--color-surface-low)] hover:border-[var(--color-secondary)] shadow-xs transition-all",
+    "border border-[var(--color-border-strong)] bg-white text-[var(--color-primary)] hover:bg-[var(--color-surface-low)] hover:border-[var(--color-secondary)] shadow-xs transition-colors",
   outline:
-    "border border-[var(--color-border-strong)] bg-transparent text-[var(--color-primary)] hover:bg-[var(--color-surface-low)] hover:border-[var(--color-secondary)]",
+    "border border-[var(--color-border-strong)] bg-transparent text-[var(--color-primary)] hover:bg-[var(--color-surface-low)] hover:border-[var(--color-secondary)] transition-colors",
   ghost:
-    "bg-transparent text-[var(--color-text-primary)] hover:bg-[var(--color-surface-low)]",
+    "bg-transparent text-[var(--color-text-primary)] hover:bg-[var(--color-surface-low)] transition-colors",
 };
 
 const sizeClasses: Record<Size, string> = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-2.5 text-sm",
-  lg: "px-8 py-3 text-base",
+  sm: "px-3.5 py-1.5 text-xs font-semibold tracking-wide",
+  md: "px-5 py-2.5 text-sm font-semibold tracking-wide",
+  lg: "px-7 py-3 text-sm font-semibold tracking-wide",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -35,10 +35,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={[
-          "inline-flex items-center justify-center gap-2 font-semibold rounded-lg",
-          "transition-all duration-150 focus-visible:outline-none focus-visible:ring-2",
-          "focus-visible:ring-[var(--color-secondary-500)] focus-visible:ring-offset-2",
-          "disabled:opacity-50 disabled:cursor-not-allowed",
+          "inline-flex items-center justify-center gap-2 rounded-xs",
+          "transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2",
+          "focus-visible:ring-[var(--color-secondary)] focus-visible:ring-offset-2",
+          "disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer select-none",
           "font-[family-name:var(--font-body)]",
           variantClasses[variant],
           sizeClasses[size],

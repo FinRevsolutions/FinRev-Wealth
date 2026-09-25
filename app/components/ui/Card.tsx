@@ -21,9 +21,9 @@ export function Card({
   return (
     <div
       className={[
-        "bg-[var(--color-surface-card)] rounded-lg sm:rounded-xl border border-[var(--color-border-strong)]",
+        "bg-[var(--color-surface-card)] rounded-xs border border-[var(--color-border-subtle)]",
         "shadow-[var(--shadow-card)]",
-        hover && "transition-all duration-200 hover:shadow-[var(--shadow-card-hover)] hover:border-[#b8c8d2]",
+        hover && "transition-all duration-150 hover:shadow-[var(--shadow-card-hover)] hover:border-[var(--color-secondary)]",
         paddingClasses[padding],
         className,
       ]

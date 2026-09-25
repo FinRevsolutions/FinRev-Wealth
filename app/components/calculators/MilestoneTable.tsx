@@ -29,17 +29,17 @@ export function MilestoneTable({
   if (!rows || rows.length === 0) return null;
 
   return (
-    <div className="bg-white rounded-2xl border border-[var(--color-border-subtle)] p-6 md:p-8 shadow-[var(--shadow-card)] mb-10">
+    <div className="bg-white rounded-[6px] border border-[var(--color-border-subtle)] p-6 md:p-8 mb-8">
       <div className="flex items-center justify-between mb-6 pb-3 border-b border-[var(--color-border-subtle)]">
         <div>
-          <h3 className="text-base font-bold text-[var(--color-text-primary)]">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-primary)]">
             {title}
           </h3>
           <p className="text-xs text-[var(--color-text-muted)] mt-0.5">
             {subtitle}
           </p>
         </div>
-        <TrendingUp size={18} className="text-[var(--color-secondary)]" />
+        <TrendingUp size={16} className="text-[var(--color-secondary)]" />
       </div>
 
       <div className="overflow-x-auto">

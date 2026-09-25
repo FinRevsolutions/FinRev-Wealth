@@ -1,145 +1,180 @@
-﻿import Link from "next/link";
-import { ArrowRight, TrendingUp, Target, Shield, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+
+const LEDGER_PILLARS = [
+  {
+    num: "01",
+    tag: "INVEST",
+    title: "Capital Allocation & Systematic Compounding",
+    summary:
+      "Disciplined mutual fund portfolios, automated monthly SIP mandates, lumpsum deployments, and fixed income securities aligned strictly to your risk capacity and time horizon.",
+    allocations: [
+      { name: "Mutual Funds", href: "/investments/mutual-funds" },
+      { name: "Systematic Investment Plans (SIP)", href: "/investments/sip" },
+      { name: "Lumpsum & STP Staging", href: "/investments/lumpsum" },
+      { name: "Bonds & Fixed Income", href: "/investments/bonds" },
+    ],
+    primaryLink: { text: "Explore Investment Solutions", href: "/investments" },
+    holdingNote: "Direct AMC folios with individual investor ownership",
+  },
+  {
+    num: "02",
+    tag: "PLAN",
+    title: "Milestone-Driven Wealth Roadmaps",
+    summary:
+      "Map every invested rupee to concrete personal milestones — children's higher education, residential asset acquisition, and post-retirement independence. Modeled against long-term inflation and realistic returns.",
+    allocations: [
+      { name: "Retirement Corpus Modeling", href: "/wealth-solutions/retirement-planning" },
+      { name: "Children's Higher Education", href: "/wealth-solutions/child-education" },
+      { name: "Goal-Based Investing", href: "/wealth-solutions/goal-based-investing" },
+      { name: "Portfolio Diagnostic Review", href: "/wealth-solutions/portfolio-review" },
+    ],
+    primaryLink: { text: "Explore Wealth Planning", href: "/wealth-solutions" },
+    holdingNote: "Goal-aligned timelines and asset allocation targets",
+  },
+  {
+    num: "03",
+    tag: "PROTECT",
+    title: "Risk Defense & Capital Insulation",
+    summary:
+      "Comprehensive pure-risk term life protection and health insurance buffers designed to insulate your family and ensure unplanned life emergencies never force premature liquidation of compounding assets.",
+    allocations: [
+      { name: "Pure Term Life Cover", href: "/protection/term-insurance" },
+      { name: "Comprehensive Health Buffers", href: "/protection/health-insurance" },
+      { name: "Life Insurance Solutions", href: "/protection/life-insurance" },
+      { name: "Emergency Liquidity Strategy", href: "/protection" },
+    ],
+    primaryLink: { text: "Explore Protection Solutions", href: "/protection" },
+    holdingNote: "Capital protection buffer prior to taking equity risk",
+  },
+  {
+    num: "04",
+    tag: "GROW",
+    title: "Specialized Portfolio Allocation",
+    summary:
+      "Curated access to professional Portfolio Management Services (PMS), regulated Alternative Investment Funds (AIF), and pre-IPO unlisted opportunities for qualified investors seeking institutional-grade management.",
+    allocations: [
+      { name: "Portfolio Management (PMS)", href: "/investments/pms" },
+      { name: "Alternative Investment Funds (AIF)", href: "/investments/aif" },
+      { name: "Unlisted Equities & Pre-IPO", href: "/investments/unlisted-pre-ipo" },
+      { name: "Strategic Wealth Creation", href: "/wealth-solutions/wealth-creation" },
+    ],
+    primaryLink: { text: "Explore Specialized Solutions", href: "/investments/pms" },
+    holdingNote: "For eligible portfolios seeking specialized strategies",
+  },
+];
 
 export function PillarsSection() {
   return (
-    <section className="py-16 md:py-24 bg-white border-b border-[var(--color-border-subtle)]">
+    <section className="py-16 md:py-24 bg-white border-b border-[var(--color-border-subtle)]" aria-label="Core Financial Pillars">
       <Container>
-        {/* Section Header */}
-        <div className="mb-12">
-          <SectionLabel>Structured Financial Framework</SectionLabel>
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-primary)] tracking-tight mt-2"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Organize Every Stage of Your Wealth.
-          </h2>
-          <p className="text-base text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-2xl">
-            We connect wealth creation, real-life milestone planning, and risk defense into one coherent financial approach.
-          </p>
+        {/* Section Header — Editorial & Authoritative */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-4 border-b border-[var(--color-border-strong)] gap-6">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-secondary)]" />
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[var(--color-secondary)]">
+                Financial Architecture
+              </span>
+            </div>
+            <h2
+              className="text-3xl sm:text-4xl md:text-[42px] font-extrabold text-[var(--color-primary)] tracking-tight leading-[1.15]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Organize Every Dimension of Your Wealth.
+            </h2>
+            <p className="text-sm sm:text-base text-[var(--color-text-secondary)] mt-3 leading-relaxed">
+              We structure your family balance sheet through an interconnected four-part ledger — building savings, planning for milestones, defending downside risks, and compounding capital over generations.
+            </p>
+          </div>
+          <div className="hidden lg:block text-right">
+            <span className="text-[11px] font-mono text-[var(--color-text-muted)] uppercase tracking-wider block">
+              Execution Model
+            </span>
+            <span className="text-xs font-semibold text-[var(--color-primary)]">
+              Direct AMFI Distribution · ARN-195797
+            </span>
+          </div>
         </div>
 
-        {/* Asymmetric Layout: INVEST (7 cols) + PLAN / PROTECT / GROW (5 cols) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-
-          {/* INVEST — dominant feature */}
-          <div className="lg:col-span-7 bg-[var(--color-surface-canvas)] rounded-lg p-7 md:p-9 border border-[var(--color-border-strong)] flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <TrendingUp size={20} className="text-[var(--color-secondary)] shrink-0" />
-                <div>
-                  <h3 className="text-xl font-bold text-[var(--color-primary)]">
-                    INVEST — Build Your Wealth
-                  </h3>
-                </div>
-              </div>
-
-              <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
-                Disciplined mutual fund allocations, automated SIP mandates, and fixed income instruments aligned to inflation and market cycles. All investments are held directly with respective fund houses in individual folios.
-              </p>
-
-              {/* Service list — clean text links, no sub-cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border-t border-[var(--color-border-subtle)]">
-                {[
-                  { label: "Mutual Funds", href: "/investments/mutual-funds" },
-                  { label: "Systematic Investment Plans (SIP)", href: "/investments/sip" },
-                  { label: "Lumpsum Deployment & STP", href: "/investments/lumpsum" },
-                  { label: "Bonds & Fixed Income", href: "/investments/bonds" },
-                ].map((s) => (
-                  <Link
-                    key={s.label}
-                    href={s.href}
-                    className="flex items-center justify-between py-3 pr-2 border-b border-[var(--color-border-subtle)] text-sm text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors group"
+        {/* Editorial Financial Ledger (No Cards — Pure Structured Rows) */}
+        <div className="divide-y divide-[var(--color-border-subtle)]">
+          {LEDGER_PILLARS.map((pillar) => (
+            <div
+              key={pillar.num}
+              className="py-8 md:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start group"
+            >
+              {/* Column 1: Moniker & Index (3 cols) */}
+              <div className="lg:col-span-3">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-2xl sm:text-3xl font-extrabold text-[var(--color-secondary)]">
+                    {pillar.num}
+                  </span>
+                  <span
+                    className="text-2xl sm:text-3xl font-black tracking-tight text-[var(--color-primary)]"
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
-                    <span>{s.label}</span>
-                    <ArrowRight size={13} className="opacity-30 group-hover:opacity-100 shrink-0 transition-opacity" />
+                    {pillar.tag}
+                  </span>
+                </div>
+                <p className="text-xs text-[var(--color-text-muted)] mt-2 font-medium">
+                  {pillar.holdingNote}
+                </p>
+              </div>
+
+              {/* Column 2: Strategic Narrative (5 cols) */}
+              <div className="lg:col-span-5">
+                <h3 className="text-base sm:text-lg font-bold text-[var(--color-primary)] mb-2">
+                  {pillar.title}
+                </h3>
+                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                  {pillar.summary}
+                </p>
+                <div className="mt-4">
+                  <Link
+                    href={pillar.primaryLink.href}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors"
+                  >
+                    <span>{pillar.primaryLink.text}</span>
+                    <ArrowRight size={13} />
                   </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-5 mt-4 border-t border-[var(--color-border-subtle)] flex items-center justify-between">
-              <span className="text-xs text-[var(--color-text-muted)]">Direct AMC folio holding</span>
-              <Link
-                href="/investments"
-                className="text-xs font-bold text-[var(--color-secondary)] hover:text-[var(--color-primary)] inline-flex items-center gap-1.5"
-              >
-                <span>Explore Investment Solutions</span>
-                <ArrowRight size={13} />
-              </Link>
-            </div>
-          </div>
-
-          {/* Right Column: PLAN / PROTECT / GROW */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            {/* PLAN */}
-            <div className="bg-white rounded-lg p-6 border border-[var(--color-border-strong)] flex-1 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2.5 mb-3">
-                  <Target size={17} className="text-[var(--color-secondary)] shrink-0" />
-                  <h4 className="text-base font-bold text-[var(--color-primary)]">
-                    PLAN — Plan Around Your Goals
-                  </h4>
                 </div>
-                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                  Map every rupee to concrete life milestones — dream home, children's higher education, and retirement independence.
-                </p>
               </div>
-              <div className="flex items-center justify-between pt-4 mt-4 border-t border-[var(--color-border-subtle)]">
-                <span className="text-[11px] text-[var(--color-text-muted)]">Goal-based roadmaps</span>
-                <Link href="/wealth-solutions" className="text-xs font-bold text-[var(--color-secondary)] inline-flex items-center gap-1">
-                  <span>Explore Planning</span>
-                  <ArrowRight size={12} />
-                </Link>
-              </div>
-            </div>
 
-            {/* PROTECT */}
-            <div className="bg-white rounded-lg p-6 border border-[var(--color-border-strong)] flex-1 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2.5 mb-3">
-                  <Shield size={17} className="text-[var(--color-secondary)] shrink-0" />
-                  <h4 className="text-base font-bold text-[var(--color-primary)]">
-                    PROTECT — Protect What Matters
-                  </h4>
-                </div>
-                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                  Comprehensive pure-risk term life cover and health buffers to ensure life emergencies never force liquidation of your investments.
+              {/* Column 3: Allocation Scope (4 cols) */}
+              <div className="lg:col-span-4 bg-[var(--color-surface-canvas)] p-4 sm:p-5 rounded-[6px] border border-[var(--color-border-subtle)]">
+                <p className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-2.5">
+                  Allocation Coverage
                 </p>
-              </div>
-              <div className="flex items-center justify-between pt-4 mt-4 border-t border-[var(--color-border-subtle)]">
-                <span className="text-[11px] text-[var(--color-text-muted)]">Pure risk & health buffers</span>
-                <Link href="/protection" className="text-xs font-bold text-[var(--color-secondary)] inline-flex items-center gap-1">
-                  <span>Explore Protection</span>
-                  <ArrowRight size={12} />
-                </Link>
+                <ul className="space-y-2">
+                  {pillar.allocations.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="flex items-center justify-between text-xs font-medium text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors group/link"
+                      >
+                        <span>{item.name}</span>
+                        <ArrowRight size={12} className="text-[var(--color-text-muted)] group-hover/link:text-[var(--color-secondary)] group-hover/link:translate-x-0.5 transition-all" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* GROW */}
-            <div className="bg-white rounded-lg p-6 border border-[var(--color-border-strong)] flex-1 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2.5 mb-3">
-                  <Sparkles size={17} className="text-[var(--color-finrev-gold)] shrink-0" />
-                  <h4 className="text-base font-bold text-[var(--color-primary)]">
-                    GROW — Build for the Long Term
-                  </h4>
-                </div>
-                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                  Sophisticated portfolio management and alternative investment frameworks for eligible portfolios seeking specialized allocation.
-                </p>
-              </div>
-              <div className="flex items-center justify-between pt-4 mt-4 border-t border-[var(--color-border-subtle)]">
-                <span className="text-[11px] text-[var(--color-text-muted)]">Portfolio Management</span>
-                <Link href="/wealth-solutions/wealth-creation" className="text-xs font-bold text-[var(--color-secondary)] inline-flex items-center gap-1">
-                  <span>Explore Wealth Creation</span>
-                  <ArrowRight size={12} />
-                </Link>
-              </div>
-            </div>
-          </div>
+        {/* Ledger Bottom Summary Bar */}
+        <div className="pt-6 mt-2 border-t border-[var(--color-border-strong)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[var(--color-text-muted)]">
+          <span>Objective Asset Allocation · Risk-Mapped Execution · Regular Folio Review</span>
+          <Link
+            href="/about"
+            className="text-[var(--color-secondary)] hover:text-[var(--color-primary)] font-semibold inline-flex items-center gap-1"
+          >
+            <span>Learn About the FINREV Advisory Practice</span>
+            <ArrowRight size={13} />
+          </Link>
         </div>
       </Container>
     </section>

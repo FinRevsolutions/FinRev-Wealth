@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Coins, ShieldCheck, CheckCircle2, AlertTriangle, HelpCircle, Calculator, TrendingUp } from "lucide-react";
+import { ArrowRight, Coins, ShieldCheck, CheckCircle2, AlertTriangle, HelpCircle, Calculator, TrendingUp, Calendar, Repeat, BarChart3, Clock } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { createPageMetadata } from "@/lib/metadata";
+import { REGULATORY } from "@/lib/constants";
 
 export const metadata: Metadata = createPageMetadata(
   "Systematic Investment Plan (SIP) — Disciplined Wealth Compounding",
@@ -13,296 +14,371 @@ export const metadata: Metadata = createPageMetadata(
 
 const FAQS = [
   {
-    q: "What is Rupee Cost Averaging in SIP?",
-    a: "When market prices are high, your fixed monthly SIP buys fewer mutual fund units; when market prices drop, your fixed monthly SIP automatically buys more units. Over time, this lowers your average acquisition cost per unit without requiring you to time market cycles.",
+    q: "What is Rupee Cost Averaging in an SIP?",
+    a: "When market prices fall, your fixed monthly SIP installment automatically acquires more mutual fund units at lower NAVs. When markets appreciate, your installment purchases fewer units at higher NAVs. Over market cycles, this lowers your weighted average purchase cost without requiring speculative market timing.",
   },
   {
-    q: "Can I stop, pause, or modify my SIP?",
-    a: "Yes. SIPs offer complete flexibility. You can pause your SIP for up to 3–6 months, stop it entirely without penalties, or increase the monthly amount using a Step-Up mandate as your income rises.",
+    q: "Can I pause, stop, or step-up my monthly SIP?",
+    a: "Yes. SIPs provide complete operational flexibility. You can pause installments for 1–6 months, cancel the mandate without financial penalty, or set an annual Step-Up (e.g. +10% annually) to match career salary increments.",
   },
   {
-    q: "Is there a penalty if my bank balance is insufficient on the SIP date?",
-    a: "The AMC does not penalize you; they simply do not allot units for that month. However, your bank may levy ECS/NACH bounce charges. We recommend maintaining sufficient balance or setting SIP dates right after salary credit.",
+    q: "What occurs if my registered bank account has insufficient balance?",
+    a: "The AMC does not levy a penalty; they simply skip unit allotment for that particular cycle. However, your commercial bank may levy standard ECS/NACH mandate dishonor fees. We recommend scheduling SIP debit dates 2–3 business days after monthly salary credit.",
   },
   {
-    q: "What is the best SIP date of the month?",
-    a: "Long-term historical market studies show virtually zero statistical difference in compounding returns across different days of the month (1st, 5th, 10th, or 15th). The best date is simply 2–3 days following your primary monthly income deposit.",
+    q: "Is there an optimal calendar date for SIP execution?",
+    a: "Longitudinal analysis of Indian market indices across 25+ years demonstrates virtually zero statistical difference in long-term compounding returns across calendar days (1st, 5th, 10th, 20th). Regularity and tenure far outweigh calendar date selection.",
+  },
+];
+
+const COMPOUNDING_MILESTONES = [
+  {
+    years: "Year 05",
+    horizon: "Foundation Phase",
+    invested: "₹6,00,000",
+    projected: "₹8,24,864",
+    growthRatio: "27% from compounding",
+    description: "Capital base is being established. Capital contributions dominate portfolio value.",
+  },
+  {
+    years: "Year 10",
+    horizon: "Inflection Phase",
+    invested: "₹12,00,000",
+    projected: "₹23,23,391",
+    growthRatio: "48% from compounding",
+    description: "Compounded gains begin matching total principal contributions as exponential acceleration takes effect.",
+  },
+  {
+    years: "Year 15",
+    horizon: "Acceleration Phase",
+    invested: "₹18,00,000",
+    projected: "₹50,45,760",
+    growthRatio: "64% from compounding",
+    description: "Compounding returns now account for roughly two-thirds of the total accumulated wealth corpus.",
+  },
+  {
+    years: "Year 20",
+    horizon: "Maturity Phase",
+    invested: "₹24,00,000",
+    projected: "₹99,91,479",
+    growthRatio: "76% from compounding",
+    description: "Market compounding dwarfs contributions by over 3:1, turning modest monthly savings into generational corpus.",
   },
 ];
 
 export default function SIPPage() {
   return (
-    <div className="py-12 md:py-20 bg-[var(--color-surface-canvas)] min-h-screen">
+    <div className="py-10 md:py-16 bg-[var(--color-surface-canvas)] min-h-screen">
       <Container>
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-[var(--color-text-muted)] mb-8">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-[var(--color-text-muted)] mb-6">
           <Link href="/" className="hover:text-[var(--color-text-primary)] transition-colors">Home</Link>
           <span>/</span>
           <Link href="/investments" className="hover:text-[var(--color-text-primary)] transition-colors">Investments</Link>
           <span>/</span>
-          <span className="text-[var(--color-text-primary)]">SIP</span>
+          <span className="text-[var(--color-text-primary)]">Systematic Investment Plan</span>
         </nav>
 
-        <div className="max-w-4xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--color-emerald-subtle)] text-[var(--color-secondary)] text-xs font-bold rounded border border-[var(--color-border-strong)] mb-3">
-            <Coins size={14} />
+        {/* Hero Section */}
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-primary)] mb-2">
+            <Coins size={13} className="text-[var(--color-secondary)]" />
             <span>Disciplined Wealth Compounding</span>
+            <span className="text-[var(--color-secondary)]">•</span>
+            <span className="font-mono text-[var(--color-secondary)]">{REGULATORY.arnNumber}</span>
           </div>
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-text-primary)] tracking-tight mt-1"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Systematic Investment Planning (SIP)
           </h1>
-          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mt-3 leading-relaxed max-w-3xl">
-            Eliminate the stress of timing the stock market. An automated monthly SIP harnesses rupee cost averaging
-            to compound consistent monthly savings into generational wealth.
+          <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mt-3 leading-relaxed">
+            Eliminate the behavioral hazards of market timing. A Systematic Investment Plan converts market volatility
+            into an operational advantage by automating disciplined monthly capital accumulation through SEBI-regulated mutual funds.
           </p>
         </div>
 
-        {/* 3 Pillars of SIP */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-white p-7 rounded-2xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)]">
-            <div className="w-10 h-10 rounded-xl bg-[var(--color-secondary)] text-white flex items-center justify-center mb-4">
-              <TrendingUp size={20} />
+        {/* SIP Core Mechanics: Timeline & Principles (Not a generic 3-card grid) */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Architectural Framework</span>
+              <h2 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+                The Three Operational Engines of SIP
+              </h2>
             </div>
-            <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
-              Rupee Cost Averaging
-            </h3>
-            <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-              Volatile markets become an advantage. Downturns allow your fixed monthly installment to accumulate
-              significantly more units at lower NAVs, accelerating your eventual recovery upside.
-            </p>
+            <span className="text-xs text-[var(--color-text-muted)] font-mono">Automated Execution Protocol</span>
           </div>
 
-          <div className="bg-white p-7 rounded-2xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)]">
-            <div className="w-10 h-10 rounded-xl bg-[var(--color-primary)] text-white flex items-center justify-center mb-4">
-              <CheckCircle2 size={20} />
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[var(--color-border-subtle)]">
+            <div className="py-4 md:py-0 md:pr-6 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--color-primary)]">
+                <Repeat size={14} className="text-[var(--color-secondary)]" />
+                <span>01. Rupee-Cost Averaging</span>
+              </div>
+              <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                By investing a fixed rupee allocation each month, you buy more mutual fund units when markets correct and fewer when valuations expand, structurally lowering your average cost per unit over market cycles.
+              </p>
             </div>
-            <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
-              Automated Financial Habit
-            </h3>
-            <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-              Through OTM (One Time Mandate) / NACH bank auto-debits, wealth creation becomes frictionless.
-              You invest before you spend, protecting your surplus from discretionary lifestyle creep.
-            </p>
-          </div>
 
-          <div className="bg-white p-7 rounded-2xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)]">
-            <div className="w-10 h-10 rounded-xl bg-[var(--color-tertiary)] text-white flex items-center justify-center mb-4">
-              <Calculator size={20} />
+            <div className="py-4 md:py-0 md:px-6 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--color-primary)]">
+                <Clock size={14} className="text-[var(--color-secondary)]" />
+                <span>02. Behavioral Discipline</span>
+              </div>
+              <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                Automated OTM/eNACH bank debits institutionalize the fundamental savings principle: <span className="italic font-medium">Income – Investment = Expenditure</span>, protecting capital from discretionary lifestyle inflation.
+              </p>
             </div>
-            <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
-              Step-Up Flexibility
-            </h3>
-            <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-              Link your SIP increments to your annual career appraisals. Increasing your SIP contribution by 10%
-              each year can more than double your 20-year maturity corpus.
-            </p>
+
+            <div className="py-4 md:py-0 md:pl-6 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--color-primary)]">
+                <TrendingUp size={14} className="text-[var(--color-secondary)]" />
+                <span>03. Non-Linear Compounding</span>
+              </div>
+              <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                Returns generate subsequent returns. In equity mutual funds, reinvested dividends and capital gains expand exponentially, shifting the bulk of wealth creation into years 10 through 20 of consistent participation.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* VISUAL 1: Rupee Cost Averaging Demonstration */}
-        <div className="bg-white rounded-2xl p-7 md:p-8 border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] mb-16">
-          <div className="max-w-2xl mb-6">
-            <SectionLabel>Mechanics of Averaging</SectionLabel>
-            <h3 className="text-xl font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
-              Why Market Corrections Accelerate SIP Compounding
-            </h3>
+        {/* VISUALIZATION: Rupee Cost Averaging Mechanism Table */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Empirical Mechanism</span>
+              <span className="text-[11px] font-mono text-[var(--color-text-muted)]">Illustrative Demonstration</span>
+            </div>
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
+              How Rupee-Cost Averaging Functions During Market Volatility
+            </h2>
             <p className="text-xs text-[var(--color-text-muted)] mt-1">
-              Fixed monthly installments automatically purchase more mutual fund units when valuations decline.
+              Example scenario: A 5-month cycle showing fixed ₹10,000 monthly investments during market corrections and subsequent recovery.
             </p>
           </div>
 
-          <div className="overflow-x-auto mb-6">
+          <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-[var(--color-border-subtle)] text-[var(--color-text-muted)] uppercase tracking-wider font-bold">
-                  <th className="py-2.5">Month</th>
-                  <th className="py-2.5">Monthly SIP</th>
-                  <th className="py-2.5">Scheme NAV</th>
-                  <th className="py-2.5">Units Acquired</th>
-                  <th className="py-2.5 text-right">Cumulative Value</th>
+                <tr className="border-b border-[var(--color-border-subtle)] text-[var(--color-text-muted)] uppercase tracking-wider font-semibold">
+                  <th className="py-3 px-3">Installment Period</th>
+                  <th className="py-3 px-3">Allocated Amount</th>
+                  <th className="py-3 px-3">Scheme NAV</th>
+                  <th className="py-3 px-3">Units Acquired</th>
+                  <th className="py-3 px-3 text-right">Cumulative Portfolio Value</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--color-border-subtle)] font-medium text-[var(--color-text-secondary)]">
                 <tr>
-                  <td className="py-3 font-bold text-[var(--color-text-primary)]">Month 1 (Market High)</td>
-                  <td className="py-3">₹10,000</td>
-                  <td className="py-3 font-mono">₹50.00</td>
-                  <td className="py-3 font-mono">200.0 units</td>
-                  <td className="py-3 font-mono text-right">₹10,000</td>
+                  <td className="py-3 px-3 font-semibold text-[var(--color-text-primary)]">Month 1 (Market Baseline)</td>
+                  <td className="py-3 px-3">₹10,000</td>
+                  <td className="py-3 px-3 font-mono">₹50.00</td>
+                  <td className="py-3 px-3 font-mono">200.00 units</td>
+                  <td className="py-3 px-3 font-mono text-right">₹10,000</td>
                 </tr>
-                <tr className="bg-rose-50/50">
-                  <td className="py-3 font-bold text-rose-800">Month 2 (Market Correction)</td>
-                  <td className="py-3">₹10,000</td>
-                  <td className="py-3 font-mono text-rose-800 font-bold">₹40.00</td>
-                  <td className="py-3 font-mono text-rose-800 font-bold">250.0 units (+25% more!)</td>
-                  <td className="py-3 font-mono text-right">₹18,000</td>
+                <tr className="bg-amber-50/40">
+                  <td className="py-3 px-3 font-semibold text-amber-900">Month 2 (Market Correction -20%)</td>
+                  <td className="py-3 px-3">₹10,000</td>
+                  <td className="py-3 px-3 font-mono text-amber-900 font-semibold">₹40.00</td>
+                  <td className="py-3 px-3 font-mono text-amber-900 font-semibold">250.00 units (+25% units)</td>
+                  <td className="py-3 px-3 font-mono text-right">₹18,000</td>
                 </tr>
-                <tr className="bg-rose-50/70">
-                  <td className="py-3 font-bold text-rose-900">Month 3 (Market Bottom)</td>
-                  <td className="py-3">₹10,000</td>
-                  <td className="py-3 font-mono text-rose-900 font-bold">₹33.33</td>
-                  <td className="py-3 font-mono text-rose-900 font-bold">300.0 units (+50% more!)</td>
-                  <td className="py-3 font-mono text-right">₹25,000</td>
+                <tr className="bg-amber-50/70">
+                  <td className="py-3 px-3 font-semibold text-amber-950">Month 3 (Market Bottom -33%)</td>
+                  <td className="py-3 px-3">₹10,000</td>
+                  <td className="py-3 px-3 font-mono text-amber-950 font-semibold">₹33.33</td>
+                  <td className="py-3 px-3 font-mono text-amber-950 font-semibold">300.03 units (+50% units)</td>
+                  <td className="py-3 px-3 font-mono text-right">₹25,000</td>
                 </tr>
                 <tr>
-                  <td className="py-3 font-bold text-[var(--color-text-primary)]">Month 4 (Recovery Phase)</td>
-                  <td className="py-3">₹10,000</td>
-                  <td className="py-3 font-mono">₹45.00</td>
-                  <td className="py-3 font-mono">222.2 units</td>
-                  <td className="py-3 font-mono text-right">₹43,750</td>
+                  <td className="py-3 px-3 font-semibold text-[var(--color-text-primary)]">Month 4 (Recovery Phase)</td>
+                  <td className="py-3 px-3">₹10,000</td>
+                  <td className="py-3 px-3 font-mono">₹45.00</td>
+                  <td className="py-3 px-3 font-mono">222.22 units</td>
+                  <td className="py-3 px-3 font-mono text-right">₹43,751</td>
                 </tr>
-                <tr className="bg-emerald-50/60">
-                  <td className="py-3 font-bold text-emerald-800">Month 5 (New Peak)</td>
-                  <td className="py-3">₹10,000</td>
-                  <td className="py-3 font-mono font-bold text-emerald-800">₹55.00</td>
-                  <td className="py-3 font-mono">181.8 units</td>
-                  <td className="py-3 font-mono text-right font-bold text-emerald-900">₹63,470</td>
+                <tr className="bg-emerald-50/40">
+                  <td className="py-3 px-3 font-semibold text-emerald-900">Month 5 (New High +10%)</td>
+                  <td className="py-3 px-3">₹10,000</td>
+                  <td className="py-3 px-3 font-mono font-semibold text-emerald-900">₹55.00</td>
+                  <td className="py-3 px-3 font-mono">181.82 units</td>
+                  <td className="py-3 px-3 font-mono text-right font-bold text-emerald-900">₹63,474</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div className="p-4 rounded-xl bg-[var(--color-surface-low)] border border-[var(--color-border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-            <div>
-              <span className="font-bold text-[var(--color-text-primary)] block">Average Acquisition Cost: ₹43.32 per unit</span>
-              <span className="text-[var(--color-text-muted)] text-[11px]">Even though starting and ending NAVs averaged ~₹50+, the investor acquired units at ₹43.32.</span>
+          <div className="mt-6 pt-4 border-t border-[var(--color-border-subtle)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-[var(--color-surface-low)] p-4 rounded-[4px]">
+            <div className="text-xs text-[var(--color-text-secondary)]">
+              <span className="font-semibold text-[var(--color-text-primary)] block">Weighted Average Acquisition Cost: ₹43.32 / unit</span>
+              <span className="text-[11px] text-[var(--color-text-muted)]">Even though start NAV was ₹50 and end NAV was ₹55, the average purchase cost was ₹43.32 due to down-market unit accumulation.</span>
             </div>
-            <span className="text-xs font-bold text-[var(--color-secondary)] bg-[var(--color-emerald-subtle)] px-3 py-1 rounded-full border border-[var(--color-border-strong)] shrink-0">
-              Total Units: 1,154 • Value: ₹63,470 (Gain: +26.9%)
-            </span>
+            <div className="text-right shrink-0">
+              <span className="text-xs font-mono font-bold text-[var(--color-secondary)] block">Total Investment: ₹50,000</span>
+              <span className="text-xs font-mono font-bold text-[var(--color-primary)]">Portfolio Value: ₹63,474 (+26.9%)</span>
+            </div>
           </div>
         </div>
 
-        {/* VISUAL 2: 20-Year Compounding Timeline (Invested vs Wealth Growth) */}
-        <div className="bg-white rounded-2xl p-7 md:p-8 border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)] mb-16">
-          <div className="max-w-2xl mb-6">
-            <SectionLabel>Multi-Decade Power</SectionLabel>
-            <h3 className="text-xl font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
-              Illustrative Compounding Progression (₹10,000 Monthly SIP @ 12% CAGR)
-            </h3>
-            <p className="text-xs text-[var(--color-text-muted)] mt-1">
-              Notice how compounded returns dramatically dwarf total deposited capital after year 10.
-            </p>
+        {/* TIMELINE / COMPOUNDING HORIZON (Linear Contribution vs Compounding Alpha) */}
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Longitudinal Compounding</span>
+              <h2 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+                Compounding Progression Across 20 Years
+              </h2>
+            </div>
+            <span className="text-xs text-[var(--color-text-muted)] font-mono">Model: ₹10,000/mo @ 12% CAGR</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            {[
-              {
-                period: "5 Years",
-                invested: "₹6.00 Lakhs",
-                returns: "₹2.25 Lakhs",
-                total: "₹8.25 Lakhs",
-                splitInvested: "73%",
-                splitGrowth: "27%",
-              },
-              {
-                period: "10 Years",
-                invested: "₹12.00 Lakhs",
-                returns: "₹11.23 Lakhs",
-                total: "₹23.23 Lakhs",
-                splitInvested: "52%",
-                splitGrowth: "48%",
-              },
-              {
-                period: "15 Years",
-                invested: "₹18.00 Lakhs",
-                returns: "₹32.46 Lakhs",
-                total: "₹50.46 Lakhs",
-                splitInvested: "36%",
-                splitGrowth: "64%",
-              },
-              {
-                period: "20 Years",
-                invested: "₹24.00 Lakhs",
-                returns: "₹75.91 Lakhs",
-                total: "₹99.91 Lakhs",
-                splitInvested: "24%",
-                splitGrowth: "76%",
-              },
-            ].map((milestone) => (
-              <div key={milestone.period} className="p-5 rounded-xl bg-[var(--color-surface-low)] border border-[var(--color-border-subtle)] flex flex-col justify-between">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            {COMPOUNDING_MILESTONES.map((m) => (
+              <div key={m.years} className="border border-[var(--color-border-subtle)] rounded-[4px] p-4 bg-[var(--color-surface-low)] flex flex-col justify-between">
                 <div>
-                  <span className="font-mono text-xs font-bold text-[var(--color-secondary)] uppercase tracking-wider block mb-1">
-                    {milestone.period} Milestone
-                  </span>
-                  <span className="text-xl font-bold text-[var(--color-text-primary)] block mb-3" style={{ fontFamily: "var(--font-heading)" }}>
-                    {milestone.total}
-                  </span>
-
-                  <div className="space-y-1 text-xs text-[var(--color-text-secondary)] mb-4">
-                    <div className="flex justify-between"><span>Invested:</span><span className="font-semibold">{milestone.invested}</span></div>
-                    <div className="flex justify-between text-[var(--color-secondary)]"><span>Growth:</span><span className="font-bold">{milestone.returns}</span></div>
+                  <div className="flex items-center justify-between text-xs font-mono text-[var(--color-text-muted)] mb-1">
+                    <span>{m.years}</span>
+                    <span className="text-[var(--color-secondary)] font-semibold">{m.horizon}</span>
+                  </div>
+                  <div className="text-xl font-bold text-[var(--color-text-primary)] font-mono my-1">
+                    {m.projected}
+                  </div>
+                  <div className="text-[11px] text-[var(--color-text-muted)] mb-3">
+                    Invested: <span className="font-mono text-[var(--color-text-primary)]">{m.invested}</span>
                   </div>
                 </div>
-
                 <div>
-                  <div className="w-full h-2 rounded-full overflow-hidden flex bg-slate-200">
-                    <div className="bg-[var(--color-primary)] h-full" style={{ width: milestone.splitInvested }} title={`Invested: ${milestone.splitInvested}`} />
-                    <div className="bg-[var(--color-secondary)] h-full" style={{ width: milestone.splitGrowth }} title={`Growth: ${milestone.splitGrowth}`} />
+                  <div className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-secondary)] mb-1">
+                    {m.growthRatio}
                   </div>
-                  <div className="flex justify-between text-[10px] text-[var(--color-text-muted)] mt-1 font-mono">
-                    <span>Deposit: {milestone.splitInvested}</span>
-                    <span className="text-[var(--color-secondary)] font-bold">Alpha: {milestone.splitGrowth}</span>
-                  </div>
+                  <p className="text-[11px] text-[var(--color-text-muted)] leading-relaxed border-t border-[var(--color-border-subtle)] pt-2">
+                    {m.description}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
 
-          <span className="text-[10px] text-[var(--color-text-muted)] block text-center italic">
-            Note: The figures above are strictly illustrative based on an assumed 12% annualized return and do not represent guaranteed outcomes. Mutual funds are subject to market risks.
-          </span>
+          <div className="p-3.5 bg-amber-50/60 border border-amber-200 rounded-[4px] text-[11px] text-amber-900 leading-relaxed">
+            <strong>Regulatory Disclaimer:</strong> The above multi-year projections are purely illustrative mathematical simulations based on an assumed 12% CAGR and do not represent guaranteed or assured returns. Mutual funds are subject to market risks, and actual portfolio returns will fluctuate based on economic cycles, market conditions, and scheme asset allocations.
+          </div>
+        </div>
+
+        {/* Technical Guidance & SIP vs Step-Up Comparison */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6">
+            <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
+              Fixed SIP vs Step-Up SIP Mandates
+            </h3>
+            <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mb-4">
+              A standard SIP maintains a static monthly debit throughout the investment tenure. A Step-Up SIP automatically increases your contribution by a predetermined percentage (typically 10%) or fixed rupee amount annually.
+            </p>
+            <div className="space-y-2 text-xs border-t border-[var(--color-border-subtle)] pt-3 text-[var(--color-text-secondary)]">
+              <div className="flex items-start gap-2">
+                <CheckCircle2 size={13} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
+                <span>Absorbs annual salary and professional income increments smoothly.</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 size={13} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
+                <span>Compresses the time required to achieve long-term milestone goals by up to 35%.</span>
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-[var(--color-border-subtle)]">
+              <Link
+                href="/tools/step-up-sip-calculator"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-primary)] hover:text-[var(--color-secondary)]"
+              >
+                <span>Launch Step-Up SIP Simulator</span>
+                <ArrowRight size={12} />
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6">
+            <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
+              Direct AMC Custody & Bank Mandates
+            </h3>
+            <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mb-4">
+              All SIP investments through FINREV SOLUTIONS operate under SEBI's direct settlement framework:
+            </p>
+            <div className="space-y-2 text-xs border-t border-[var(--color-border-subtle)] pt-3 text-[var(--color-text-secondary)]">
+              <div className="flex items-start gap-2">
+                <CheckCircle2 size={13} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
+                <span>Monthly debits transfer directly from your bank to the clearing corporation (BSE StAR MF / NSE NMF II).</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 size={13} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
+                <span>Mutual fund folios are registered directly in your name with respective AMCs and RTAs (CAMS / KFintech).</span>
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-[var(--color-border-subtle)]">
+              <Link
+                href="/tools/sip-calculator"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-primary)] hover:text-[var(--color-secondary)]"
+              >
+                <span>Launch Interactive SIP Calculator</span>
+                <ArrowRight size={12} />
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* FAQs */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-6" style={{ fontFamily: "var(--font-heading)" }}>
-            Frequently Asked Questions on SIP
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-white border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 mb-12">
+          <div className="border-b border-[var(--color-border-subtle)] pb-4 mb-6">
+            <h2 className="text-xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: "var(--font-heading)" }}>
+              Frequently Asked Questions on Systematic Investment Plans
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {FAQS.map((faq) => (
-              <div key={faq.q} className="p-5 bg-white rounded-xl border border-[var(--color-border-subtle)] shadow-[var(--shadow-card)]">
-                <div className="flex items-start gap-2 mb-2">
-                  <HelpCircle size={16} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
-                  <h4 className="text-sm font-bold text-[var(--color-text-primary)] leading-snug">{faq.q}</h4>
+              <div key={faq.q} className="border-b border-[var(--color-border-subtle)] pb-4">
+                <div className="flex items-start gap-2 mb-1.5">
+                  <HelpCircle size={14} className="text-[var(--color-secondary)] shrink-0 mt-0.5" />
+                  <h3 className="text-xs font-bold text-[var(--color-text-primary)] leading-snug">{faq.q}</h3>
                 </div>
-                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed pl-6">{faq.a}</p>
+                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed pl-5">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-[var(--color-primary)] text-white rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl mb-12">
-          <div className="max-w-xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-secondary-fixed)] block mb-1">
-              Start Your SIP
-            </span>
-            <h3 className="text-2xl font-bold text-white tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-              Automate Your Wealth Creation Journey
+        {/* Action Panel */}
+        <div className="bg-[var(--color-surface-container-highest)] border border-[var(--color-border-subtle)] rounded-[4px] p-6 md:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
+          <div>
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-secondary)]">Client Onboarding</span>
+            <h3 className="text-lg font-bold text-[var(--color-text-primary)] mt-1" style={{ fontFamily: "var(--font-heading)" }}>
+              Establish an Automated SIP Portfolio
             </h3>
-            <p className="text-xs text-white/70 mt-2 leading-relaxed">
-              Paperless onboarding with Aadhaar/PAN and auto-mandate setup guided by Panchanan Kumar (ARN-195797).
+            <p className="text-xs text-[var(--color-text-secondary)] mt-1 max-w-xl">
+              Connect with Panchanan Kumar (ARN-195797) to map your monthly surpluses to target risk profiles and fund categories.
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="px-7 py-3.5 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-700)] text-white text-xs font-bold rounded-xl text-center shrink-0 shadow-md transition-colors inline-flex items-center gap-2"
-          >
-            <span>Start an SIP Today</span>
-            <ArrowRight size={14} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link
+              href="/tools/sip-calculator"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white border border-[var(--color-border-subtle)] text-xs font-semibold text-[var(--color-text-primary)] rounded-[4px] hover:border-[var(--color-primary)] transition-colors"
+            >
+              <Calculator size={14} />
+              <span>Simulate SIP</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-xs font-semibold text-white rounded-[4px] hover:bg-[var(--color-primary-800)] transition-colors"
+            >
+              <span>Consult on Mandate</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
 
-        {/* Compliance Footer */}
-        <div className="p-4 rounded-xl bg-white border border-[var(--color-border-subtle)] flex items-start gap-3 text-xs text-[var(--color-text-muted)]">
-          <ShieldCheck size={18} className="text-[var(--color-text-muted)] shrink-0 mt-0.5" />
+        {/* Regulatory Disclosure */}
+        <div className="p-4 bg-white border border-[var(--color-border-subtle)] rounded-[4px] flex items-start gap-3 text-xs text-[var(--color-text-muted)]">
+          <ShieldCheck size={16} className="shrink-0 mt-0.5 text-[var(--color-secondary)]" />
           <p className="leading-relaxed">
-            <strong>Statutory Disclosure:</strong> Mutual fund investments are subject to market risks.
-            Read all scheme related documents carefully before investing. SIP is a methodology for disciplined investing
-            and does not assure profits or insulate against market loss during falling markets.
+            <strong>AMFI / SEBI Statutory Disclosure:</strong> Mutual fund investments are subject to market risks. Read all scheme related documents carefully before investing. Past performance is not indicative of future returns. Systematic Investment Plan (SIP) does not guarantee profits or protect against market losses during market downturns. FINREV SOLUTIONS is an AMFI-registered Mutual Fund Distributor (ARN-195797).
           </p>
         </div>
       </Container>

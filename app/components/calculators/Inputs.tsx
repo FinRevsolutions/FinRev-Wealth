@@ -64,7 +64,7 @@ export function CurrencyInput({
               const parsed = Number(e.target.value);
               onChange(isNaN(parsed) ? min : Math.min(max, Math.max(min, parsed)));
             }}
-            className="w-36 sm:w-40 pl-7 pr-3 py-1.5 text-right font-bold text-base text-[var(--color-secondary)] bg-[var(--color-surface-canvas)] border border-[var(--color-border-subtle)] rounded-lg focus:outline-none focus:border-[var(--color-secondary)] transition-colors"
+            className="w-36 sm:w-44 pl-7 pr-3 min-h-[40px] text-right font-bold text-base text-[var(--color-secondary)] bg-white border border-[var(--color-border-strong)] rounded-[4px] focus:outline-none focus:border-[var(--color-secondary)] transition-colors"
             style={{ fontFamily: "var(--font-mono)" }}
           />
         </div>
@@ -76,7 +76,7 @@ export function CurrencyInput({
         step={sStep}
         value={Math.min(sMax, Math.max(sMin, value))}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-[var(--color-secondary)] h-2 bg-[var(--color-border-subtle)] rounded-lg cursor-pointer"
+        className="w-full accent-[var(--color-secondary)] h-2 bg-[var(--color-border-subtle)] rounded-[2px] cursor-pointer"
       />
       {(helperMin || helperMid || helperMax) && (
         <div className="flex justify-between text-[11px] text-[var(--color-text-muted)] font-medium">
@@ -138,7 +138,7 @@ export function PercentageInput({
               const parsed = Number(e.target.value);
               onChange(isNaN(parsed) ? min : Math.min(max, Math.max(min, parsed)));
             }}
-            className="w-24 px-3 py-1.5 text-right font-bold text-base text-[var(--color-text-primary)] bg-[var(--color-surface-canvas)] border border-[var(--color-border-subtle)] rounded-lg focus:outline-none focus:border-[var(--color-secondary)] transition-colors"
+            className="w-24 px-3 min-h-[40px] text-right font-bold text-base text-[var(--color-text-primary)] bg-white border border-[var(--color-border-strong)] rounded-[4px] focus:outline-none focus:border-[var(--color-secondary)] transition-colors"
             style={{ fontFamily: "var(--font-mono)" }}
           />
           <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[var(--color-text-muted)]">
@@ -153,7 +153,7 @@ export function PercentageInput({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-[var(--color-secondary)] h-2 bg-[var(--color-border-subtle)] rounded-lg cursor-pointer"
+        className="w-full accent-[var(--color-secondary)] h-2 bg-[var(--color-border-subtle)] rounded-[2px] cursor-pointer"
       />
       {(helperMin || helperMid || helperMax) && (
         <div className="flex justify-between text-[11px] text-[var(--color-text-muted)] font-medium">
@@ -217,7 +217,7 @@ export function DurationInput({
               const parsed = Number(e.target.value);
               onChange(isNaN(parsed) ? min : Math.min(max, Math.max(min, parsed)));
             }}
-            className="w-24 px-3 py-1.5 text-right font-bold text-base text-[var(--color-text-primary)] bg-[var(--color-surface-canvas)] border border-[var(--color-border-subtle)] rounded-lg focus:outline-none focus:border-[var(--color-secondary)] transition-colors"
+            className="w-24 px-3 min-h-[40px] text-right font-bold text-base text-[var(--color-text-primary)] bg-white border border-[var(--color-border-strong)] rounded-[4px] focus:outline-none focus:border-[var(--color-secondary)] transition-colors"
             style={{ fontFamily: "var(--font-mono)" }}
           />
           <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-[var(--color-text-muted)]">
@@ -232,7 +232,7 @@ export function DurationInput({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-[var(--color-secondary)] h-2 bg-[var(--color-border-subtle)] rounded-lg cursor-pointer"
+        className="w-full accent-[var(--color-secondary)] h-2 bg-[var(--color-border-subtle)] rounded-[2px] cursor-pointer"
       />
       {(helperMin || helperMid || helperMax) && (
         <div className="flex justify-between text-[11px] text-[var(--color-text-muted)] font-medium">
@@ -275,7 +275,7 @@ export function SelectInput({
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="px-3 py-2 text-xs font-bold text-[var(--color-text-primary)] bg-[var(--color-surface-canvas)] border border-[var(--color-border-subtle)] rounded-lg focus:outline-none focus:border-[var(--color-secondary)] cursor-pointer"
+        className="px-3 min-h-[40px] text-xs font-bold text-[var(--color-text-primary)] bg-white border border-[var(--color-border-strong)] rounded-[4px] focus:outline-none focus:border-[var(--color-secondary)] cursor-pointer"
       >
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>

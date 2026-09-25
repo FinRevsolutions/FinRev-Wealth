@@ -29,7 +29,12 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = DEFAULT_METADATA;
+export const metadata: Metadata = {
+  ...DEFAULT_METADATA,
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -43,8 +48,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <meta name="theme-color" content="#0a192f" />
+        <meta name="theme-color" content="#071a2a" />
       </head>
       <body className="min-h-screen flex flex-col bg-[var(--color-background)] text-[var(--color-on-surface)]">
         <Header />
